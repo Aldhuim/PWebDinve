@@ -1,0 +1,99 @@
+.TitleHome{
+  font-weight: bold;
+  font-size:30px;
+  text-transform: uppercase;
+  font-family: Roboto;
+  font-style: normal;
+  text-transform: uppercase;
+	background: linear-gradient(80deg, #455421 0%, #60694B 0.01%, #333A23 100%);
+	-webkit-background-clip: text;
+  background-clip: text;
+	-webkit-text-fill-color: transparent;
+  padding-left:20px;
+  padding-top: 23px;
+}
+.contenido{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contecard{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    color: #fff;
+}
+.contecard .card:hover{
+  background: linear-gradient(180deg, #1c220db9 0%, #303526ce 0.01%, #212516f5 100%);
+  cursor: pointer;
+  color: #fff;
+}
+
+.card{
+    background: linear-gradient(180deg, #455421 0%, #60694B 0.01%, #333A23 100%);
+    width: 70%;
+    color: #fff;
+    padding: 1px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+}
+
+.card-title{
+    margin-top: 2%;
+    margin-left: 5%;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size:17px;
+    text-transform: uppercase;
+    text-decoration: none;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.card-description{
+    margin-left: 7%;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.card-info{
+    margin-left: 9%;
+    margin-bottom: 2%;
+    padding: 5px;
+    color: #FFFFFF;
+    font-size: 12px;
+    text-decoration: none;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.HeaderTitle{
+  margin-left: 20px;
+  margin-bottom: 20px;
+  width: 80%;
+}
+
+.btnRetu{
+    display:flex;
+    align-items: center;
+}
+.btnText{
+  margin-top: 19px;
+  display:flex;
+  align-items: center;
+  background: linear-gradient(180deg, #869268 0%, #5F6D3D 95.83%, #869268 100%);
+  border-radius: 20px;
+  width: 100px;
+  color: #fff;
+  font-weight: 500;
+
+}
+
+.btnRetu .btnText:hover{
+  background: linear-gradient(180deg, #869268d5 0%, #5f6d3dc2 95.83%, #869268d3 100%);
+  cursor: pointer;
+}
+
+
