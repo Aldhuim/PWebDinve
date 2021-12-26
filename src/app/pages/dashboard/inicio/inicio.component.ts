@@ -13,6 +13,7 @@ export class InicioComponent implements OnInit {
 
   showFiller = false;
 
+<<<<<<< Updated upstream
   constructor(public auth: AuthService) { }
 
   ngOnInit(): void {
@@ -21,6 +22,19 @@ export class InicioComponent implements OnInit {
   }
 
 
+=======
+  constructor(private auth: AuthService) { }
+
+  ngOnInit(): void {
+
+    this.Role();
+
+  }
+
+  Role(): void {
+    this.auth.isAdmin.subscribe(response => this.isAdmin = response);
+  }
+>>>>>>> Stashed changes
 
 }
 

@@ -39,7 +39,11 @@ export class LoginComponent implements OnInit {
     myDate.setHours( myDate.getHours() + 8 );
     const forms = this.form.value;
 
+<<<<<<< Updated upstream
       if(forms != null) {
+=======
+      if(forms){
+>>>>>>> Stashed changes
         //this.cookie.set('token',response.token,myDate,'/');
         this.router.navigate(['dashboard'])
       }

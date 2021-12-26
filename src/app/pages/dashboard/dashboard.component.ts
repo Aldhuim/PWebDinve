@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import {FlatTreeControl} from '@angular/cdk/tree';
 import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
 import { AuthService } from '../auth/auth.service';
+<<<<<<< Updated upstream
 
 interface MenuNode {
   modulo: string;
@@ -73,11 +74,26 @@ const TREE_DATA: MenuNode[] = [
     ]
   }
 ];
+=======
+import data from 'src/assets/data/menu.json';
+import dataadmin from 'src/assets/data/menu_admin.json';
+import { MenuNode } from 'src/app/models/menu.interface';
+
+
+
+const TREE_DATA: MenuNode[] = data;
+
+const TREE_DATA_ADMIN: MenuNode[] = dataadmin;
+>>>>>>> Stashed changes
 
 /** Flat node with expandable and level information */
 interface ExampleFlatNode {
   expandable: boolean;
   name: string;
+<<<<<<< Updated upstream
+=======
+  permissions: string;
+>>>>>>> Stashed changes
   modulo: string;
   level: number;
 }
@@ -89,6 +105,11 @@ interface ExampleFlatNode {
 })
 export class DashboardComponent implements OnInit {
 
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
   isAdmin:any = null;
 
   private _transformer = (node: MenuNode, level: number) => {
@@ -96,6 +117,10 @@ export class DashboardComponent implements OnInit {
       expandable: !!node.children && node.children.length > 0,
       name: node.name,
       modulo: node.modulo,
+<<<<<<< Updated upstream
+=======
+      permissions: node.permissions,
+>>>>>>> Stashed changes
       level: level,
     };
   };
@@ -103,7 +128,10 @@ export class DashboardComponent implements OnInit {
   treeControl = new FlatTreeControl<ExampleFlatNode>(
     node => node.level,
     node => node.expandable,
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
   );
 
   treeFlattener = new MatTreeFlattener(
@@ -116,7 +144,22 @@ export class DashboardComponent implements OnInit {
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
   constructor(private auth: AuthService) {
+<<<<<<< Updated upstream
     this.dataSource.data = TREE_DATA;
+=======
+
+    this.Role();
+
+    console.log("Rol: ",this.isAdmin)
+
+    //if(this.isAdmin == 'admin'){
+      this.dataSource.data = TREE_DATA_ADMIN;
+    // }
+    // else{
+    //   this.dataSource.data = TREE_DATA;
+    // }
+
+>>>>>>> Stashed changes
   }
 
   ngOnInit(): void {
@@ -131,7 +174,15 @@ export class DashboardComponent implements OnInit {
 
   //Exit
   onLogout():void{
+<<<<<<< Updated upstream
 
+=======
+    this.auth.logout();
+  }
+
+  Role(): void {
+    this.auth.isAdmin.subscribe(response => this.isAdmin = response);
+>>>>>>> Stashed changes
   }
 
 }

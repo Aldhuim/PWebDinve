@@ -1,0 +1,149 @@
+.HeaderTitle{
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.TitleHome{
+  font-weight: bold;
+  font-size:30px;
+  text-transform: uppercase;
+  font-family: Roboto;
+  font-style: normal;
+  text-transform: uppercase;
+	background: linear-gradient(80deg, #455421 0%, #60694B 0.01%, #333A23 100%);
+	-webkit-background-clip: text;
+  background-clip: text;
+	-webkit-text-fill-color: transparent;
+  padding-left:20px;
+  padding-top: 23px;
+}
+
+.ContForm{
+  padding:20px 20px 0px 20px;
+}
+.SubTitleForm{
+  font-size: 18px;
+  line-height: 21px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 800;
+  text-transform: uppercase;
+	background: linear-gradient(80deg, #455421 0%, #60694B 0.01%, #333A23 100%);
+	-webkit-background-clip: text;
+  background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.InpForm{
+  width: 100%;
+  border: none;
+  border-radius:2px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.InpForm:focus{
+  outline-color: #333a239d;
+}
+
+.BtnForm{
+  border: none;
+  background: linear-gradient(180deg, #5F6D3D 0%, #455421 100%);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 700;
+  padding:2px;
+  height:30px;
+  text-align: center;
+  width: 100%;
+}
+
+.BtnForm:hover{
+  background: linear-gradient(180deg, #869268 0%, #353b26e1 95.83%, #b9c0a5bb 100%);
+}
+
+
+.tblgeneral{
+  padding: 30px 20px 0 20px;
+}
+
+.tblForm{
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background: linear-gradient(180deg, #455421 0%, #60694B 0.01%, #333A23 100%);
+  color: #fff;
+  text-transform: uppercase;
+}
+.tdForm{
+  background: #EBE9E9;
+  border: 2px solid linear-gradient(180deg, #455421 0%, #60694B 0.01%, #333A23 100%);
+  border:1px solid #000;
+  color: #000;
+}
+
+.tblbody{
+  background: #EBE9E9;
+  text-align: center;
+  font-family: Roboto;
+  font-style: normal;
+}
+
+.tblCont{
+  padding:15px;
+
+}
+
+.Frth{
+  border-top-left-radius: 10px 10px ;
+}
+
+.Lsth{
+  border-top-right-radius: 10px 10px ;
+}
+
+.btninfo{
+  padding: 0;
+  border: none;
+  background: none;
+  width:35px;
+  height:35px;
+  border-radius: 5px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-color:#0d6efd;
+  margin:0 2px 0 2px;
+
+}
+
+.btnwarning{
+  padding: 0;
+  border: none;
+  background: none;
+  width:35px;
+  height:35px;
+  border-radius: 5px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-color:#ffc107;
+  margin:0 2px 0 2px;
+}
+
+.btndanger{
+  padding: 0;
+  border: none;
+  background: none;
+  width:35px;
+  height:35px;
+  border-radius: 5px;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-color:#dc3545;
+  margin:0 2px 0 2px;
+}
+

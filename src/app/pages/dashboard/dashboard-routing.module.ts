@@ -1,3 +1,7 @@
+<<<<<<< Updated upstream
+=======
+import { RoleGuard } from './../shared/guards/role.guard';
+>>>>>>> Stashed changes
 
 
 import { NgModule } from '@angular/core';
@@ -5,6 +9,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { NotLoginGuard } from '../shared/guards/not-login.guard';
 
 
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 import { DashboardComponent } from './dashboard.component';
 import { FormpiComponent } from './Formulario-5A/formpi/formpi.component';
 import { Formpi2Component } from './Formulario-5A/formpi2/formpi2.component';
@@ -24,12 +33,22 @@ import { CreateUserComponent } from './CRUDUser/create-user/create-user.componen
 import { EditUserComponent } from './CRUDUser/edit-user/edit-user.component';
 import { DeleteUserComponent } from './CRUDUser/delete-user/delete-user.component';
 
+<<<<<<< Updated upstream
+=======
+import { InsEnvComponent } from './Inscripciones/ins-env/ins-env.component';
+import { VerInsComponent } from './Inscripciones/ver-ins/ver-ins.component';
+
+>>>>>>> Stashed changes
 
 const routes: Routes = [
   {path: '', component:DashboardComponent, children: [
     {path:'', component:InicioComponent},
     {path:'modulofip', component:SecmenuComponent},
+<<<<<<< Updated upstream
     {path:'modulouser', component:ManteuserComponent},
+=======
+    {path:'modulouser', component:ManteuserComponent}, //RoleGuard
+>>>>>>> Stashed changes
     {path:'FA', component:FormpiComponent},
     {path:'FAp2', component:Formpi2Component},
     {path:'FAp3', component:Formpi3Component},
@@ -37,15 +56,31 @@ const routes: Routes = [
     {path:'FB', component:FormioarrComponent},
     {path:'FBp2', component:Formioarr2Component},
     {path:'FBp3', component:Formioarr3Component},
+<<<<<<< Updated upstream
     {path:'VerU', component:VerUserComponent},
     {path:'CrearU', component:CreateUserComponent},
     {path:'ModU', component:EditUserComponent},
     {path:'EliU', component:DeleteUserComponent},
   ]}
+=======
+    {path:'VerU', component:VerUserComponent,}, //RoleGuard
+    {path:'CrearU', component:CreateUserComponent}, //RoleGuard
+    {path:'ModU', component:EditUserComponent,}, //RoleGuard
+    {path:'EliU', component:DeleteUserComponent,}, //RoleGuard
+    {path:'VerIns', component:VerInsComponent, }, //RoleGuard
+    {path:'InsEnv', component:InsEnvComponent},
+  ],
+  //canActivate:[NotLoginGuard]
+  }
+>>>>>>> Stashed changes
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
+<<<<<<< Updated upstream
   exports: [RouterModule]
+=======
+  exports: [RouterModule ]
+>>>>>>> Stashed changes
 })
 export class DashboardRoutingModule { }

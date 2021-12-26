@@ -4,10 +4,25 @@ import { CommonModule } from '@angular/common';
 import {MatSliderModule } from '@angular/material/slider';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
+<<<<<<< Updated upstream
 import { FormsModule } from '@angular/forms';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatTableModule} from '@angular/material/table';
+=======
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import {MatIconModule} from '@angular/material/icon';
+import {MatTreeModule} from '@angular/material/tree';
+import {MatTableModule} from '@angular/material/table';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+
+
+
+
+
+>>>>>>> Stashed changes
 
 
 @NgModule({
@@ -20,7 +35,16 @@ import {MatTableModule} from '@angular/material/table';
     MatToolbarModule,
     MatIconModule,
     MatTreeModule,
+<<<<<<< Updated upstream
     MatTableModule
+=======
+    MatTableModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatInputModule
+
+>>>>>>> Stashed changes
   ],
   exports: [
     MatSliderModule,
@@ -29,7 +53,15 @@ import {MatTableModule} from '@angular/material/table';
     MatToolbarModule,
     MatIconModule,
     MatTreeModule,
+<<<<<<< Updated upstream
     MatTableModule
+=======
+    MatTableModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatSelectModule,
+    MatInputModule
+>>>>>>> Stashed changes
   ]
 })
 export class SharedModule { }

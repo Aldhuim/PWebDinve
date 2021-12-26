@@ -12,14 +12,29 @@ import { SharedModule } from './pages/shared/shared.module';
 
 import {HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+<<<<<<< Updated upstream
 import {MatSnackBarModule } from '@angular/material/snack-bar'
+=======
+import {MatSnackBarModule } from '@angular/material/snack-bar';
+
+
+
+
+
+
+>>>>>>> Stashed changes
 //import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+<<<<<<< Updated upstream
     LoginComponent
+=======
+    LoginComponent,
+
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,

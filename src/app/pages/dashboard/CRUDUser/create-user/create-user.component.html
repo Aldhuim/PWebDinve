@@ -1,1 +1,64 @@
+<<<<<<< Updated upstream
 <p>create-user works!</p>
+=======
+<div class="container">
+
+  <div class="row HeaderTitle">
+    <div class="col-md-12">
+      <div class="TitleHome">
+        crear usuario
+      </div>
+    </div>
+  </div>
+
+  <form [formGroup]="CrearForm" (ngSubmit)="onSave()">
+    <div class="jumbotron">
+      <div class="container">
+        <div class="row ContForm">
+          <div class="SubTitleForm">Nombre</div>
+          <div class=""><input type="text" formControlName="nombre" class="InpForm"></div>
+        </div>
+        <div class="row ContForm">
+          <div class="SubTitleForm">Apellido</div>
+          <div class=""><input type="text" formControlName="apellido" class="InpForm"></div>
+        </div>
+        <div class="row ContForm">
+          <div class="SubTitleForm">username</div>
+          <div class=""><input type="text" formControlName="user" class="InpForm"></div>
+        </div>
+        <div class="row ContForm">
+          <div class="SubTitleForm">password</div>
+          <div class=""><input type="password" formControlName="password" class="InpForm"></div>
+        </div>
+        <div class="row ContForm">
+          <div class="SubTitleForm">Dni</div>
+          <div class=""><input type="text" formControlName="dni" class="InpForm"></div>
+        </div>
+      </div>
+    </div>
+    <div class="jumbotron">
+      <div class="container">
+        <div class="row ContForm">
+          <div class="SubTitleForm">Rol</div>
+          <div class=""><input type="number" formControlName="rol" class="InpForm"></div>
+        </div>
+        <div class="row ContForm">
+          <div class="SubTitleForm">Cargo</div>
+          <div class=""><input type="text" formControlName="cargo" class="InpForm"></div>
+        </div>
+        <div class="row ContForm">
+          <div class="SubTitleForm">Unidad Productora</div>
+          <div class=""><input type="number" formControlName="id_unidadproductora" class="InpForm"></div>
+        </div>
+        <div class="row ContForm">
+          <div class="col-md-6"><input type="submit" class="BtnForm" value="Registrar Usuario"></div>
+          <div class="col-md-6"><input type="submit" class="BtnForm2" value="Cancelar" routerLink="/dashboard/modulouser"></div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
+
+
+>>>>>>> Stashed changes

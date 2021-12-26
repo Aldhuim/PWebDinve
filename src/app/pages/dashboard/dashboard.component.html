@@ -17,6 +17,7 @@
       <div class="TitleNav">Menú de Navegación </div>
         <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="NavSlider">
             <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding [id]="node.modulo">
+<<<<<<< Updated upstream
                 <button mat-icon-button class="btnSubOpciones" routerLink="/dashboard/{{node.modulo}}">
                     {{node.name}}
                 </button>
@@ -24,6 +25,15 @@
             <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding [id]="node.modulo">
               <button mat-icon-button matTreeNodeToggle class="btnSubMenu"
                       [attr.aria-label]="'Toggle ' + node.name">
+=======
+                <button mat-icon-button class="btnSubOpciones" routerLink="/dashboard/{{node.modulo}}" >
+                    {{node.name}}
+                </button>
+              </mat-tree-node>
+            <mat-tree-node *matTreeNodeDef="let node;when: hasChild " matTreeNodePadding [id]="node.modulo">
+              <button mat-icon-button matTreeNodeToggle class="btnSubMenu"
+                      [attr.aria-label]="'Toggle ' + node.name" >
+>>>>>>> Stashed changes
                       {{node.name}}
                 <mat-icon class="mat-icon-rtl-mirror">
                   {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}

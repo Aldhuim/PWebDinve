@@ -1,0 +1,57 @@
+ [
+  {
+    "modulo": "modulofip",
+    "name": "crear fip",
+    "permissions":"publico",
+    "children": [
+     {
+      "name": "proyecto de inversión",
+      "modulo": "moduloPI",
+      "permissions":"publico",
+      "children":[
+        {
+        "modulo": "FA",
+        "name": "Formato N° 05-A",
+        "permissions":"publico"
+        }
+      ]
+     },
+     {
+      "name": "IOARR",
+      "modulo": "moduloIOAAR",
+      "permissions":"publico",
+      "children": [
+        {
+          "modulo": "FB",
+          "name": "Formato N° 05-B",
+          "permissions":"publico"
+        }
+      ]
+     }
+    ]
+  },
+  {
+    "modulo": "moduloinscripciones",
+    "name": "inscripciones",
+    "permissions":"publico",
+    "children": [
+      {
+        "modulo": "InsEnv",
+        "name": "Inscripciones Enviadas",
+        "permissions":"publico"
+      }
+    ]
+  },
+  {
+    "modulo": "moduloconfig",
+    "name": "Configuraciones",
+    "permissions":"publico",
+    "children": [
+      {
+        "modulo": "CamPass",
+        "name": "Datos",
+        "permissions":"publico"
+      }
+    ]
+  }
+]

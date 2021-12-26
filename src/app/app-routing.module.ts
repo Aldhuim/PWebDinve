@@ -9,7 +9,13 @@ const routes: Routes = [
 
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path:'login', component:LoginComponent },
+<<<<<<< Updated upstream
   {path: 'dashboard', loadChildren: ()=> import('./pages/dashboard/dashboard.module').then((x=>x.DashboardModule))},
+=======
+  {path: 'dashboard', loadChildren: ()=> import('./pages/dashboard/dashboard.module').then((x=>x.DashboardModule))
+  //,canActivate:[NotLoginGuard]
+  },
+>>>>>>> Stashed changes
   {path:'**', component:NotfoundComponent},
 
 
