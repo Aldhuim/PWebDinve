@@ -1,3 +1,5 @@
+import { SpinnerModule } from './components/shared/spinner/spinner.module';
+import { SharedModule } from './components/shared/shared.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -5,36 +7,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { LoginComponent } from './pages/login/login.component';
 
-
-import { SharedModule } from './pages/shared/shared.module';
-
-import {HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './components/login/login.component';
+import {HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-<<<<<<< Updated upstream
-import {MatSnackBarModule } from '@angular/material/snack-bar'
-=======
-import {MatSnackBarModule } from '@angular/material/snack-bar';
+import { AdminInterceptor } from './components/shared/interceptor/admin-interceptor';
+import { SpinnerInteractor } from './components/shared/interceptor/spinner.interceptor';
 
-
-
-
-
-
->>>>>>> Stashed changes
-//import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-<<<<<<< Updated upstream
     LoginComponent
-=======
-    LoginComponent,
-
->>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
@@ -43,10 +28,12 @@ import {MatSnackBarModule } from '@angular/material/snack-bar';
     SharedModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatSnackBarModule
-
+    SpinnerModule
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS, useClass: AdminInterceptor, multi:true},
+    {provide:HTTP_INTERCEPTORS, useClass: SpinnerInteractor, multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

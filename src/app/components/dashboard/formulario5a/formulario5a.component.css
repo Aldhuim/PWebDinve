@@ -1,0 +1,57 @@
+.form-group{
+  width:100%;
+  float:left;
+
+}
+
+.SubForm{
+  padding-bottom: 2%;
+  padding-top: 1%;
+
+}
+
+.lblForm{
+  margin-left:5%;
+  float:left;
+  width:15%;
+}
+
+.lblForm-check{
+  margin-left:5%;
+  float:left;
+  width:40%;
+}
+
+.form-group mat-form-field{
+  margin-left: 15%;
+  width:50%;
+  font-size:12px;
+  float:left;
+}
+
+.form-group mat-checkbox{
+  margin-left: 15%;
+  width:30%;
+  float:left;
+}
+
+.demo-table {
+  width: 100%;
+}
+
+.container-table{
+  padding-left: 5%;
+  width: 80%;
+  text-align:center;
+}
+
+.container-table-ioaar{
+  padding-left: 5%;
+  width: 50%;
+}
+
+th.mat-header-cell{
+ text-align:center;
+}
+
+

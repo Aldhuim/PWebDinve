@@ -1,0 +1,47 @@
+.body{
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+}
+
+.content-login{
+  width: 100%;
+  max-width: 350px;
+  text-align: center;
+  background: linear-gradient(180deg, #5F6D3D 0%, #203500 100%);
+}
+
+
+.imgLogo{
+  width: 30%;
+  margin:20px;
+}
+
+.content-title{
+  color:#FFFFFF;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+
+mat-form-field{
+  width: 90%;
+  margin:10px
+}
+
+:host ::ng-deep .mat-form-field-flex {
+  background: rgb(245, 245, 245);
+}
+
+.btnIngresar{
+  color: #FFFFFF;
+  width: 80%;
+  height:40px;
+  margin-bottom:20px;
+}
+
+.btnIngresar[disabled]{
+  color: rgba(255, 255, 255, 0.5);
+  background: #77835a;
+}

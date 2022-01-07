@@ -1,0 +1,43 @@
+
+<div class="container-header">
+  <div>Ver Usuarios</div>
+  <br>
+  <mat-form-field appearance="fill">
+    <input [(ngModel)]="Filter" matInput placeholder="ID, NOMBRE, APELLIDO, CARGO, DNI, ...">
+  </mat-form-field>
+  <button mat-raised-button color="primary" routerLink="/dashboard/CrearU">CREAR NUEVO USUARIO</button>
+</div>
+
+
+  <button  type="button" (click)="prevpag()"  >menos</button>
+  <button  type="button" (click)="nextpag()" [disabled]="inputbut" >mas</button>
+
+
+<div class="container-table">
+  <table>
+    <thead>
+      <tr>
+      <th>ID</th>
+      <th>NOMBRE DEL USUARIO</th>
+      <th>CARGO</th>
+      <th>CORREO</th>
+      <th>MANTENIMIENTO</th>
+      </tr>
+    </thead>
+    <tbody  *ngFor="let element of Usuarios | ObjtoArray">
+      <tr class="trBody" *ngFor="let element2 of element | ObjtoArray |filterUser:Filter">
+        <td>{{element2.id}}</td>
+        <td>{{element2.nombre}} {{element2.apellido}}</td>
+        <td>{{element2.cargo}} </td>
+        <td>{{element2.user}} </td>
+        <td>
+          <button class="btnMan btnUser" mat-mini-fab (click)='onOpenModalVer(element2)'><mat-icon>more_horiz</mat-icon></button>
+          <button class="btnMan btnEdit" mat-mini-fab (click)='onOpenModalEdit(element2)'><mat-icon>edit</mat-icon></button>
+          <button class="btnMan btnDelete" mat-mini-fab><mat-icon>delete</mat-icon></button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</div>

@@ -1,0 +1,40 @@
+<mat-toolbar >
+  <button mat-icon-button class="IconBar" (click)="opened=!opened" >
+      <mat-icon>menu</mat-icon>
+  </button>
+  <img src="assets/Logo.png" class="LogoBar" alt="" routerLink="/dashboard">
+  <span class="TitleBar"> Proceso de Solicitud de PreInversión</span>
+  <span class="example-spacer"></span>
+    <button mat-icon-button class="IconExit" aria-label="Example icon-button with share icon" routerLink="/dashboard">
+      <mat-icon>home</mat-icon>
+    </button>
+    <button mat-icon-button class="IconExit" aria-label="Example icon-button with share icon" (click)="onLogout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav mode="side" [(opened)]="opened" >
+      <div class="TitleNav">Menú de Navegación </div>
+        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="NavSlider">
+              <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding [id]="node.modulo">
+                  <button mat-button class="btnSubOpciones" routerLink="/dashboard/{{node.modulo}}" >
+                      {{node.name}}
+                  </button>
+              </mat-tree-node>
+            <mat-tree-node *matTreeNodeDef="let node;when: hasChild " matTreeNodePadding [id]="node.modulo">
+              <button mat-button matTreeNodeToggle class="btnSubMenu"
+                      [attr.aria-label]="'Toggle ' + node.name" >
+                      {{node.name}}
+                <mat-icon class="mat-icon-rtl-mirror">
+                  {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                </mat-icon>
+              </button>
+            </mat-tree-node>
+          </mat-tree>
+    </mat-sidenav >
+    <mat-sidenav-content>
+      <app-spinner></app-spinner>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+

@@ -37,7 +37,7 @@
     "children": [
       {
         "modulo": "InsEnv",
-        "name": "Inscripciones Enviadas",
+        "name": "Mis Inscripciones Enviadas",
         "permissions":"publico"
       }
     ]

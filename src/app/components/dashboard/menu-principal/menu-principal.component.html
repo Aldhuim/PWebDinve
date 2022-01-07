@@ -1,0 +1,57 @@
+<div class="body">
+  <div class="content-body">
+    <div class="card" routerLink="/dashboard/ModuloFIP">
+      <div class="card-title">CREAR FIP </div>
+      <div class="card-description">
+          Descripción:
+      </div>
+      <div class="card-info">Permite al usuario registrar Formularios como:
+        <ul>
+          <li>Formulario de Proyecto de Inversión: Formato Nro.5-A</li>
+          <li>Formulario de IOARR: Formato Nro.5-B</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+ <ng-container *ngIf="isAdmin == 1 || isAdmin == 2" >
+  <div class="content-body">
+    <div class="card" >
+      <div class="card-title">Matenimiento Usuarios</div>
+      <div class="card-description">
+          Descripción:
+      </div>
+      <div class="card-info">Los Usuarios con mayor rango tendran permisos:
+        <ul>
+          <li>Crear Usuario</li>
+          <li>Editar Usuario</li>
+          <li>Eliminar Usuario</li>
+          <li>Ver Usuario</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+ </ng-container >
+  <div class="content-body">
+    <div class="card" routerLink="/dashboard/ModuloIns">
+      <div class="card-title">Inscripciones</div>
+      <div class="card-description">
+          Descripción:
+      </div>
+      <div class="card-info">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam inventore
+        unde tenetur ut blanditiis eos laboriosam, eum porro. Quidem blanditiis impedit,
+        autem sapiente nesciunt dolorum obcaecati quo minus quas numquam.</div>
+    </div>
+  </div>
+
+  <div class="content-body">
+    <div class="card">
+      <div class="card-title">Configuraciones</div>
+      <div class="card-description">
+          Descripción:
+      </div>
+      <div class="card-info">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam inventore
+        unde tenetur ut blanditiis eos laboriosam, eum porro. Quidem blanditiis impedit,
+        autem sapiente nesciunt dolorum obcaecati quo minus quas numquam.</div>
+  </div>
+  </div>
+</div>

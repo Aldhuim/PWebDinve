@@ -1,0 +1,56 @@
+<div class="container-header">
+  <div class="title">Crear Usuario</div>
+</div>
+
+<form [formGroup]="CrearForm" (ngSubmit)="onCreateForm()">
+  <div class="form-group">
+    <mat-form-field >
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre">
+    </mat-form-field>
+    <mat-form-field >
+      <mat-label>Apellido</mat-label>
+      <input matInput formControlName="apellido">
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field >
+      <mat-label>UserName</mat-label>
+      <input matInput formControlName="user">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Contraseña</mat-label>
+      <input matInput formControlName="password"
+       type="password">
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field >
+      <mat-label>DNI</mat-label>
+      <input matInput formControlName="dni">
+    </mat-form-field>
+    <mat-form-field >
+      <mat-label>Rol</mat-label>
+      <mat-select formControlName="rol">
+        <mat-option *ngFor="let rol of Roles" [value]="rol.value">
+          {{rol.rol}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="form-group">
+    <mat-form-field >
+      <mat-label>Cargo</mat-label>
+      <input matInput formControlName="cargo">
+    </mat-form-field>
+  </div>
+
+  <div class="footer">
+    <button class="btnForm btnRegistrar"mat-raised-button [disabled]="CrearForm.invalid"  color="primary">Registrar Usuario</button>
+  </div>
+
+</form>
+<div class="footer">
+  <button class="btnForm btnCancelar"mat-raised-button  color="accent">Cancelar</button>
+</div>
+

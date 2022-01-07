@@ -1,0 +1,501 @@
+
+<mat-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+
+      <div class="form-group">
+        <div class="lblForm">NOMBRE DE IDEA DEL PROYECTO/PROGRAMA DE INVERSIÓN</div>
+        <mat-form-field appearance="fill">
+          <mat-label>NOMBRE DE IDEA DEL PROYECTO/PROGRAMA DE INVERSIÓN</mat-label>
+          <input matInput >
+        </mat-form-field>
+      </div>
+
+      <div class="SubForm">RESPONSABILIDAD FUNCIONAL DE LA INVERSIÓN</div>
+      <div class="form-group">
+        <div class="lblForm">Función</div>
+        <mat-form-field appearance="fill">
+          <mat-label>Función</mat-label>
+          <input matInput >
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <div class="lblForm">División Funcional</div>
+        <mat-form-field appearance="fill">
+          <mat-label>División Funcional</mat-label>
+          <input matInput >
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <div class="lblForm">Grupo Funcional</div>
+        <mat-form-field appearance="fill">
+          <mat-label>Grupo Funcional</mat-label>
+          <input matInput >
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <div class="lblForm">Sector Responsable</div>
+        <mat-form-field appearance="fill">
+          <mat-label>Sector Responsable</mat-label>
+          <input matInput >
+        </mat-form-field>
+      </div>
+
+      <!-- TABLE -->
+
+      <div class="SubForm">ALINEAMIENTO A UNA BRECHA PRIORITARIA</div>
+      <form [formGroup]="FormService">
+        <div class="form-group">
+          <div class="lblForm">Servicio</div>
+          <mat-form-field appearance="fill">
+            <mat-label>Servicio</mat-label>
+            <input matInput formControlName="servicio" >
+          </mat-form-field>
+
+        </div>
+      </form>
+
+      <div class="container-table">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let element; let i = index">{{i + 1}}</td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>SERVICIO</th>
+            <td mat-cell *matCellDef="let element">{{element.servicio}}</td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="weight">
+            <th mat-header-cell *matHeaderCellDef>Número de Brechas</th>
+            <td mat-cell *matCellDef="let element">{{element.weight}}</td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="symbol">
+            <th mat-header-cell *matHeaderCellDef>Total Brechas</th>
+            <td mat-cell *matCellDef="let element">{{element.symbol}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="button">
+            <th mat-header-cell *matHeaderCellDef>
+              <button mat-raised-button (click)="addData()" class="demo-button">
+              Add Servicio
+              </button>
+            </th>
+            <td mat-cell *matCellDef="let element; let i = index">
+              <button mat-raised-button  (click)='onOpenModal(element,i + 1)'>Agregar Brecha</button>
+              <button
+              mat-raised-button [disabled]="!dataSource.length"
+              (click)="removeData()">
+            Remove data
+          </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </div>
+
+
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+  <mat-step [stepControl]="secondFormGroup" label="">
+    <form [formGroup]="secondFormGroup">
+     <div class="SubForm">UNIDAD FORMULADORA</div>
+            <div class="form-group">
+              <div class="lblForm">Sector</div>
+              <mat-form-field appearance="fill">
+                <mat-label>Sector</mat-label>
+                <input matInput >
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <div class="lblForm">Entidad</div>
+            <mat-form-field appearance="fill">
+              <mat-label>Entidad</mat-label>
+              <input matInput >
+            </mat-form-field>
+            </div>
+            <div class="form-group">
+              <div class="lblForm">Nombre de la UF</div>
+            <mat-form-field appearance="fill">
+              <mat-label>Nombre de la UF</mat-label>
+              <input matInput >
+            </mat-form-field>
+            </div>
+            <div class="form-group">
+              <div class="lblForm">Responsable de la UF</div>
+            <mat-form-field appearance="fill">
+              <mat-label>Responsable de la UF</mat-label>
+              <input matInput >
+            </mat-form-field>
+            </div>
+            <!-- 2 -->
+            <div class="SubForm">UNIDAD EJECUTORA DE INVERSIONES</div>
+            <div class="form-group">
+              <div class="lblForm">Sector</div>
+              <mat-form-field appearance="fill">
+                <mat-label>Sector</mat-label>
+                <input matInput >
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <div class="lblForm">Entidad</div>
+            <mat-form-field appearance="fill">
+              <mat-label>Entidad</mat-label>
+              <input matInput >
+            </mat-form-field>
+            </div>
+            <div class="form-group">
+              <div class="lblForm">Nombre de la UEI</div>
+            <mat-form-field appearance="fill">
+              <mat-label>Nombre de la UEI</mat-label>
+              <input matInput >
+            </mat-form-field>
+            </div>
+            <div class="form-group">
+              <div class="lblForm">Responsable de la UEI</div>
+            <mat-form-field appearance="fill">
+              <mat-label>Responsable de la UEI</mat-label>
+              <input matInput >
+            </mat-form-field>
+            </div>
+            <!-- 3 -->
+            <div class="SubForm">UNIDAD EJECUTORA PRESUPUESTAL</div>
+            <div class="form-group">
+              <div class="lblForm">Sector</div>
+              <mat-form-field appearance="fill">
+                <mat-label>Sector</mat-label>
+                <input matInput >
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <div class="lblForm">Entidad</div>
+            <mat-form-field appearance="fill">
+              <mat-label>Entidad</mat-label>
+              <input matInput >
+            </mat-form-field>
+            </div>
+            <div class="form-group">
+              <div class="lblForm">Nombre de la UE</div>
+            <mat-form-field appearance="fill">
+              <mat-label>Nombre de la UE</mat-label>
+              <input matInput >
+            </mat-form-field>
+            </div>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- 3 -->
+
+  <mat-step [stepControl]="secondFormGroup" label="">
+    <form [formGroup]="secondFormGroup">
+
+      <div class="SubForm">DATOS DE LA INVERSIÓN</div>
+      <div class="form-group">
+        <div class="lblForm">Naturaleza de intervención</div>
+        <mat-form-field appearance="fill">
+          <mat-label>Naturaleza de intervención</mat-label>
+          <input matInput >
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <div class="lblForm">Nombre de la unidad productora</div>
+        <mat-form-field appearance="fill">
+          <mat-label>Nombre de la unidad productora</mat-label>
+          <input matInput >
+        </mat-form-field>
+      </div>
+
+      <div class="SubForm">Localización geográfica de la unidad productora:</div>
+      <div class="form-group">
+        <div class="lblForm">DEPARTAMENTO</div>
+        <mat-form-field appearance="fill">
+          <mat-label>DEPARTAMENTO</mat-label>
+          <input matInput >
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <div class="lblForm">PROVINCIA</div>
+        <mat-form-field appearance="fill">
+          <mat-label>PROVINCIA</mat-label>
+          <input matInput >
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <div class="lblForm">DISTRITO</div>
+        <mat-form-field appearance="fill">
+          <mat-label>DISTRITO</mat-label>
+          <input matInput >
+        </mat-form-field>
+      </div>
+
+      <div class="SubForm">DESCRIPCIÓN AGREGADA DEL PROYECTO/PROGRAMA</div>
+      <div class="form-group">
+        <div class="lblForm">Tipo de Item</div>
+        <mat-form-field appearance="fill">
+          <mat-label>Tipo de Item</mat-label>
+          <input matInput >
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <div class="lblForm">Costo Referencial</div>
+        <mat-form-field appearance="fill">
+          <mat-label>Costo Referencial</mat-label>
+          <input matInput >
+        </mat-form-field>
+      </div>
+
+      <div class="container-table-ioaar">
+        <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8 demo-table">
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let element; let i = index">{{i + 1}}</td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>SERVICIO</th>
+            <td mat-cell *matCellDef="let element">{{element.servicio}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="button">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element; let i = index"><button mat-raised-button  (click)='onOpenModal(element,i + 1)'>Agregar Brecha</button>
+              <button
+              mat-raised-button [disabled]="!dataSource.length"
+              (click)="removeData()">
+            Remove data
+          </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+        </table>
+        <input type="submit" value="add">
+      </div>
+
+
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- 4 -->
+
+  <mat-step [stepControl]="secondFormGroup" label="">
+    <form [formGroup]="secondFormGroup">
+
+      <div class="SubForm">Capacidad de producción estimada con el proyecto de inversión</div>
+
+      <div class="form-group">
+        <div class="lblForm">Servicio</div>
+        <mat-form-field appearance="fill">
+          <mat-label>Servicio</mat-label>
+          <input matInput >
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <div class="lblForm">UM</div>
+        <mat-form-field appearance="fill">
+          <mat-label>UM</mat-label>
+          <input matInput >
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <div class="lblForm">Capacidad de producción</div>
+        <mat-form-field appearance="fill">
+          <mat-label>Capacidad de producción</mat-label>
+          <input matInput >
+        </mat-form-field>
+      </div>
+
+      <div class="container-table-ioaar">
+        <table mat-table [dataSource]="dataSource3" class="mat-elevation-z8 demo-table">
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let element; let i = index">{{i + 1}}</td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>SERVICIO</th>
+            <td mat-cell *matCellDef="let element">{{element.servicio}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="cap">
+            <th mat-header-cell *matHeaderCellDef>SERVICIO</th>
+            <td mat-cell *matCellDef="let element">{{element.servicio}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="button">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element; let i = index"><button mat-raised-button  (click)='onOpenModal(element,i + 1)'>Agregar Brecha</button>
+              <button
+              mat-raised-button [disabled]="!dataSource3.length"
+              (click)="removeData()">
+            Remove data
+          </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns3"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns3;"></tr>
+        </table>
+        <input type="submit" value="add">
+      </div>
+
+      <div class="SubForm">Para programas de inversión</div>
+      <div class="form-group">
+        <div class="lblForm">INVERSIONES</div>
+        <mat-form-field appearance="fill">
+          <mat-label>INVERSIONES</mat-label>
+          <input matInput >
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <div class="lblForm">COSTO REFERENCIAL</div>
+        <mat-form-field appearance="fill">
+          <mat-label>COSTO REFERENCIAL</mat-label>
+          <input matInput >
+        </mat-form-field>
+      </div>
+
+
+      <div class="container-table-ioaar">
+        <table mat-table [dataSource]="dataSource4" class="mat-elevation-z8 demo-table">
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef>INVERSIONES</th>
+            <td mat-cell *matCellDef="let element; let i = index">{{i + 1}}</td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>COSTO REFERENCIAL</th>
+            <td mat-cell *matCellDef="let element">{{element.servicio}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="button">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element; let i = index"><button mat-raised-button  (click)='onOpenModal(element,i + 1)'>Agregar Brecha</button>
+              <button
+              mat-raised-button [disabled]="!dataSource4.length"
+              (click)="removeData()">
+            Remove data
+          </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns4"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns4;"></tr>
+        </table>
+        <input type="submit" value="add">
+      </div>
+
+
+
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <!-- 5 -->
+
+  <mat-step>
+    <ng-template matStepLabel></ng-template>
+
+    <div class="SubForm">DESCRIPCIÓN AGREGADA DEL PROYECTO/PROGRAMA</div>
+    <div class="form-group">
+      <div class="lblForm">Documento técnico para la declaración de viabilidad</div>
+      <mat-form-field appearance="fill">
+        <mat-label>Documento técnico para la declaración de viabilidad</mat-label>
+        <input matInput >
+      </mat-form-field>
+    </div>
+
+    <div class="form-group">
+      <div class="lblForm">Costo aproximado del estudio de preinversión o ficha técnica</div>
+      <mat-form-field appearance="fill">
+        <mat-label>Costo aproximado del estudio de preinversión o ficha técnica</mat-label>
+        <input matInput >
+      </mat-form-field>
+    </div>
+    <div class="SubForm">MODALIDAD DE EJECUCIÓN TENTATIVA</div>
+    <div class="form-group">
+      <div class="lblForm-check">Administración Directa</div>
+      <mat-checkbox [labelPosition]="'before'"></mat-checkbox>
+    </div>
+    <div class="form-group">
+      <div class="lblForm-check">Administración Indirecta - Por contrata</div>
+      <mat-checkbox [labelPosition]="'before'"></mat-checkbox>
+    </div>
+    <div class="form-group">
+      <div class="lblForm-check">Administración Indirecta - Asociación Público Privada</div>
+      <mat-checkbox [labelPosition]="'before'"></mat-checkbox>
+    </div>
+    <div class="form-group">
+      <div class="lblForm-check">Administración Indirecta - Obras por Impuestos</div>
+      <mat-checkbox [labelPosition]="'before'"></mat-checkbox>
+    </div>
+    <div class="form-group">
+      <div class="lblForm-check">Administración Indirecta - Núcleo Ejecutor</div>
+      <mat-checkbox [labelPosition]="'before'"></mat-checkbox>
+    </div>
+
+    <div class="SubForm">MODALIDAD DE EJECUCIÓN TENTATIVA</div>
+
+    <div class="form-group">
+      <div class="lblForm-check">Recursos Ordinarios</div>
+      <mat-checkbox [labelPosition]="'before'"></mat-checkbox>
+    </div>
+    <div class="form-group">
+      <div class="lblForm-check">Recursos Directamente Recaudados</div>
+      <mat-checkbox [labelPosition]="'before'"></mat-checkbox>
+    </div>
+    <div class="form-group">
+      <div class="lblForm-check">Recursos por Operaciones Oficiales de Crédito</div>
+      <mat-checkbox [labelPosition]="'before'"></mat-checkbox>
+    </div>
+    <div class="form-group">
+      <div class="lblForm-check">Donaciones y transferencias</div>
+      <mat-checkbox [labelPosition]="'before'"></mat-checkbox>
+    </div>
+    <div class="form-group">
+      <div class="lblForm-check">Recursos Determinados</div>
+      <mat-checkbox [labelPosition]="'before'"></mat-checkbox>
+    </div>
+
+
+
+  <div>
+    <button mat-button matStepperPrevious>Back</button>
+    <button mat-button >Reset</button>
+  </div>
+
+  </mat-step>
+</mat-stepper>

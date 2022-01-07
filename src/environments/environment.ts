@@ -3,14 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-<<<<<<< Updated upstream
-  API_URL: 'http://localhost:3000/'
-=======
-  API_URL: 'http://localhost:8080/'
-  //API_URL: 'http://localhost:3000/,'
-
->>>>>>> Stashed changes
+  production: false
 };
 
 /*

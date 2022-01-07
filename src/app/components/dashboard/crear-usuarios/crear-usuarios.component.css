@@ -1,0 +1,42 @@
+.container-header{
+  padding: 10px 10px 10px 30px;
+}
+
+
+.title{
+  margin-top:10px;
+  font-size: 25px;
+  line-height: 21px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 800;
+  text-transform: uppercase;
+	background: linear-gradient(80deg, #455421 0%, #60694B 0.01%, #333A23 100%);
+	-webkit-background-clip: text;
+  background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.form-group{
+  padding:10px 0 10px 18%;
+}
+
+.form-group mat-form-field{
+  margin: 5px;
+  width:40%;
+}
+
+.btnRegistrar[disabled]{
+  color: rgba(255, 255, 255, 0.5);
+  background: #77835a;
+}
+
+.footer{
+  margin-left: 20%;
+}
+
+.btnForm{
+  width:35%;
+  float:left;
+  margin:20px
+}
