@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "PWebDinve": {
+    "Mesa-Dinve": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/PWebDinve",
+            "outputPath": "dist/Mesa-Dinve",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,14 +27,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/assets/styles/themes.scss",
+
+              "src/styles.css"
             ],
             "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/@popperjs/core/dist/umd/popper.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+
             ]
           },
           "configurations": {
@@ -74,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "PWebDinve:build:production"
+              "browserTarget": "Mesa-Dinve:build:production"
             },
             "development": {
-              "browserTarget": "PWebDinve:build:development"
+              "browserTarget": "Mesa-Dinve:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -85,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "PWebDinve:build"
+            "browserTarget": "Mesa-Dinve:build"
           }
         },
         "test": {
@@ -100,7 +98,7 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "src/assets/styles/themes.scss",
               "src/styles.css"
             ],
             "scripts": []
@@ -109,5 +107,5 @@
       }
     }
   },
-  "defaultProject": "PWebDinve"
+  "defaultProject": "Mesa-Dinve"
 }
