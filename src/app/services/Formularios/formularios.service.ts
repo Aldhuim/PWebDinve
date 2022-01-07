@@ -11,11 +11,13 @@ export class FormulariosService {
   constructor(private http:HttpClient) { }
 
   getall(pages:number,size:number):Observable<AllForms[]>{
-    return this.http.get<AllForms[]>(`/posts/form/get/all?page=${pages}&${size}`).pipe(catchError(this.handleError));
+    return this.http.get<AllForms[]>(`/posts/form/get/all?page=${pages}&${size}`)
+    .pipe(catchError(this.handleError));
   }
 
   getallme(pages:number,size:number):Observable<AllForms[]>{
-    return this.http.get<AllForms[]>(`/posts/form/get/me?page=${pages}&${size}`).pipe(catchError(this.handleError));
+    return this.http.get<AllForms[]>(`/posts/form/get/me?page=${pages}&${size}`)
+    .pipe(catchError(this.handleError));
   }
 
   new5B(Formularios: any):Observable<any>{

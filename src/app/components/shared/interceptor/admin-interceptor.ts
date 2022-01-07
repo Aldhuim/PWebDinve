@@ -11,7 +11,7 @@ export class AdminInterceptor implements HttpInterceptor{
   }
 
   intercept(request:HttpRequest<any>,next: HttpHandler):Observable<any>{
-    if(request.url.includes('get')||request.url.includes('create')|| request.url.includes('form5b')){
+    if(request.url.includes('get')||request.url.includes('create')|| request.url.includes('save')){
     const AuthToken = this.auth.userTokenValue;
     const AuthReq = request.clone({
       setHeaders: {
