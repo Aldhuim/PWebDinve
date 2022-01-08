@@ -32,9 +32,16 @@
     <mat-form-field >
       <mat-label>Rol</mat-label>
       <mat-select formControlName="rol">
-        <mat-option *ngFor="let rol of Roles" [value]="rol.value">
-          {{rol.rol}}
+        <ng-container *ngIf="Role == 2" >
+          <mat-option *ngFor="let rol of Roles_Admin" [value]="rol.value">
+            {{rol.rol}}
         </mat-option>
+        </ng-container>
+        <ng-container *ngIf="Role != 2" >
+          <mat-option *ngFor="let rol of Roles" [value]="rol.value">
+            {{rol.rol}}
+        </mat-option>
+        </ng-container>
       </mat-select>
     </mat-form-field>
   </div>
@@ -42,6 +49,16 @@
     <mat-form-field >
       <mat-label>Cargo</mat-label>
       <input matInput formControlName="cargo">
+    </mat-form-field>
+    <mat-form-field >
+      <mat-label>Unidad Productora</mat-label>
+      <mat-select formControlName="id_unidad" >
+       <ng-container *ngFor="let up of UP | ObjtoArray" >
+        <mat-option *ngFor="let up2 of up | ObjtoArray" [value]="up2.id">
+          {{up2.nombre}}
+        </mat-option>
+       </ng-container>
+      </mat-select>
     </mat-form-field>
   </div>
 
@@ -51,6 +68,6 @@
 
 </form>
 <div class="footer">
-  <button class="btnForm btnCancelar"mat-raised-button  color="accent">Cancelar</button>
+  <button class="btnForm btnCancelar"mat-raised-button (click)="backClicked()" color="accent">Cancelar</button>
 </div>
 

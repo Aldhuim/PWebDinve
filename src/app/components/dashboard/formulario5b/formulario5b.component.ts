@@ -1,9 +1,12 @@
 import { FormulariosService } from './../../../services/Formularios/formularios.service';
 import { ModalBrechasComponent } from './../Modals/modal-brechas/modal-brechas.component';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTable } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
+import { listaIndicarBrecha } from 'src/app/models/form.interface';
+import { Router } from '@angular/router';
+
 
 export interface PeriodicElement {
   name: string;
@@ -11,6 +14,7 @@ export interface PeriodicElement {
   weight: number;
   symbol: string;
 }
+
 
 @Component({
   selector: 'app-formulario5b',
@@ -22,12 +26,13 @@ export class Formulario5bComponent implements OnInit {
   FormService!: FormGroup;
 
   CrearForm5B!: FormGroup
-  CrearSubForm5B!: FormGroup
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol', 'button'];
   displayedColumns2: string[] = ['position', 'name', 'button'];
   dataSource: any;
   dataSource2: any;
+  ArrayDetallesBrechas:listaIndicarBrecha[] = []
+
 
   @ViewChild(MatTable) table!: MatTable<PeriodicElement>;
 
@@ -45,22 +50,23 @@ export class Formulario5bComponent implements OnInit {
   firstFormGroup!: FormGroup;
   secondFormGroup!: FormGroup;
 
-  Detalles:any;
-
-  constructor(private _formBuilder: FormBuilder, private dialog: MatDialog, private formsrv: FormulariosService) {
+  constructor(private _formBuilder: FormBuilder, private dialog: MatDialog,
+    private formsrv: FormulariosService, private router: Router) {
     this.dataSource = [];
 
     this.FormService = this._formBuilder.group({
-      servicio:['']
+      servicio:[''],
+      numero:[''],
+      brechas:[[]]
     })
 
     // El Formulario
     this.CrearForm5B = this._formBuilder.group({
     id_form : [''],
-    estado : [1 ],
+    estado : [''],
     estado2 : [0],
     id_form5b : [''],
-    nombre_idea : [''],
+    nombre_idea : ['', Validators.required],
     funcional_division : [''],
     funcional_funcion : [''],
     funcional_sector : [''],
@@ -84,15 +90,17 @@ export class Formulario5bComponent implements OnInit {
     tipo_resp : [[]],
     costo_resp : [[] ],
 
-    id_ali : this._formBuilder.array([]),
-    nombre_ali : this._formBuilder.array([]),
-    contribucion_valor : this._formBuilder.array([]),
-    id_indi : this._formBuilder.array([]),
-    nombre_indi : this._formBuilder.array([]),
-    unidad_medida : this._formBuilder.array([]),
-    espacio_geografico : this._formBuilder.array([]),
-    anno : this._formBuilder.array([]),
-    valor : this._formBuilder.array([]),
+    id_ali : [[]],
+    nombre_ali : [[]],
+    contribucion_valor : [[]],
+
+    //Estructura de la Brecha
+    id_indi : [[]],
+    nombre_indi : [[]],
+    unidad_medida : [[]],
+    espacio_geografico : [[]],
+    anno : [[]],
+    valor : [[]],
 
     id_adjunto : [[]],
     tipo_adjunto : [[]],
@@ -126,11 +134,15 @@ export class Formulario5bComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+      this.ArrayDetallesBrechas = result;
+      console.log(Object.values(result));
+      this.FormService.controls['brechas'].setValue(result);
+      console.log(this.FormService.value)
     });
   }
 
   onCreateForm5B(): void {
+    this.CrearForm5B.controls['estado'].setValue(1)
     let Form = JSON.stringify(this.CrearForm5B.value);
     console.log(Form);
     this.formsrv.new5B(Form).subscribe(res =>{
@@ -139,7 +151,21 @@ export class Formulario5bComponent implements OnInit {
   }
 
 
+  onVer(){
+    this.ArrayDetallesBrechas
+    console.log('Brecha '+ this.ArrayDetallesBrechas)
+    let Form = JSON.stringify(this.CrearForm5B.value);
+    console.log(Form);
+  }
 
+  onGuardarForm5B(): void {
+    this.CrearForm5B.controls['estado'].setValue(0)
+    let Form = JSON.stringify(this.CrearForm5B.value);
+    this.formsrv.new5B(Form).subscribe(res =>{
+      console.log('Guardado', res);
+      window.location.reload();
+    })
+  }
 
 
 

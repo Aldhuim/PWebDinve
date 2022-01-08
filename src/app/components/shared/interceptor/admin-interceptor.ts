@@ -11,7 +11,9 @@ export class AdminInterceptor implements HttpInterceptor{
   }
 
   intercept(request:HttpRequest<any>,next: HttpHandler):Observable<any>{
-    if(request.url.includes('get')||request.url.includes('create')|| request.url.includes('save')){
+    if(request.url.includes('get')||request.url.includes('create')|| request.url.includes('save')
+    || request.url.includes('up')
+    ){
     const AuthToken = this.auth.userTokenValue;
     const AuthReq = request.clone({
       setHeaders: {

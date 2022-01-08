@@ -1,3 +1,4 @@
+import { ModuloUsuariosComponent } from './modulo-usuarios/modulo-usuarios.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginGuardGuard } from '../guards/login-guard.guard';
@@ -18,9 +19,10 @@ const routes: Routes = [
     {path: '', component:MenuPrincipalComponent},
     {path: 'ModuloFIP', component:CrearfipComponent},
     {path:'FA', component:Formulario5aComponent},
+    {path:'FB', component:Formulario5bComponent},
+    {path:'ModuloUser', component:ModuloUsuariosComponent, canActivate:[RolesGuardGuard] },
     {path:'VerU', component:VerUsuariosComponent, canActivate:[RolesGuardGuard]},
     {path: 'CrearU', component:CrearUsuariosComponent, canActivate:[RolesGuardGuard]},
-    {path:'FB', component:Formulario5bComponent},
     {path:'ModuloIns', component:InscripcionesComponent },
     {path:'VerIns', component:AllFormulariosComponent, canActivate:[RolesGuardGuard] },
     {path:'InsEnv', component:MyFormulariosComponent }

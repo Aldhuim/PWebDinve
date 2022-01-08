@@ -54,4 +54,16 @@ th.mat-header-cell{
  text-align:center;
 }
 
+.footerBtn{
+  margin-top:5%;
+  float: right;
+}
 
+.footerBtn button{
+  margin: 5px;
+}
+
+mat-stepper{
+  height:auto;
+  background: linear-gradient(270deg, #C8C8C8 0%, #F3F3F3 49.97%, #C8C8C8 100%);
+}

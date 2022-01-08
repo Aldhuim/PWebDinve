@@ -61,7 +61,7 @@ export interface listaALineamientoBrechaServiciosPublicosBrechaIdentificada{
 
 export interface listaIndicarBrecha{
   id: number;
-  nombre: string;
+  nombre_indi: string;
   unidad_medida:number;
   espacio_geografico:string;
   anno: string;

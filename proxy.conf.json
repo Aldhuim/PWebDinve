@@ -1,9 +1,10 @@
+
 {
-  "/posts": {
-    "target": "http://localhost:8080",
+  "/dinve": {
+    "target": "https://mesa-dinve.azurewebsites.net",
     "secure": true,
     "pathRewrite": {
-    "^/posts": ""
+    "^/dinve": ""
   },
     "changeOrigin": true
   }
