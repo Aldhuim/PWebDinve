@@ -21,14 +21,14 @@
           <td>{{element2.formulario5A.id }}</td>
           <td>{{element2.formulario5A.nombre_idea }}</td>
           <td>Formato5A</td>
-          <td><button class="btnMan btnUser" mat-mini-fab ><mat-icon>more_horiz</mat-icon></button></td>
+          <td><button class="btnMan btnUser" mat-mini-fab (click)='onOpenModalVer(element2)'><mat-icon>more_horiz</mat-icon></button></td>
         </tr>
         <!-- Aqui Solo sale los formulario 5B -->
         <tr class="trBody" *ngIf="element2.formulario5B != null">
           <td>{{element2.formulario5B.id }}</td>
           <td>{{element2.formulario5B.nombre_idea }}</td>
           <td>Formato5B</td>
-          <td><button class="btnMan btnUser" mat-mini-fab ><mat-icon>more_horiz</mat-icon></button></td>
+          <td><button class="btnMan btnUser" mat-mini-fab (click)='onOpenModalVer(element2)'><mat-icon>more_horiz</mat-icon></button></td>
         </tr>
       </ng-container>
     </tbody>

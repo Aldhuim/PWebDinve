@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, catchError, map, Observable, Subscription, throwError } from 'rxjs';
 import { TokenResponse, User, UserRespose } from 'src/app/models/user.interface';
-
+import { environment }from 'src/environments/environment';
 
 const helper = new JwtHelperService();
 
@@ -46,7 +46,7 @@ export class AuthService  {
   }
 
   login(authData:User): Observable<UserRespose | void> {
-    return this.http.put<UserRespose>('/posts/user/login',authData)
+    return this.http.put<UserRespose>(`/dinve/user/login`,authData)
     .pipe(
       map((res:UserRespose) =>{
         if(res.msg != 'Usuario no registrado'){

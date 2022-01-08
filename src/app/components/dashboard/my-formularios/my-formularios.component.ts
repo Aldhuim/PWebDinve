@@ -3,6 +3,7 @@ import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AllForms } from 'src/app/models/form.interface';
 import { FormulariosService } from 'src/app/services/Formularios/formularios.service';
+import { VerDetallesFormulariosComponent } from '../Modals/ver-detalles-formularios/ver-detalles-formularios.component';
 
 @Component({
   selector: 'app-my-formularios',
@@ -39,6 +40,19 @@ export class MyFormulariosComponent implements OnInit {
       });
 
     })
+  }
+
+  onOpenModalVer(Formularios = {}) :void {
+    const dialogRef = this.dialog.open(VerDetallesFormulariosComponent,{
+      disableClose: true,
+      width: '550px',
+      data: {title:"Detalles Formularios" , Formularios},
+
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    });
   }
 
 }

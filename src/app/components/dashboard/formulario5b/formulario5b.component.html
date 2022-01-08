@@ -73,7 +73,7 @@
             <!-- Weight Column -->
             <ng-container matColumnDef="weight">
               <th mat-header-cell *matHeaderCellDef>Número de Brechas</th>
-              <td mat-cell *matCellDef="let element">{{element.weight}}</td>
+              <td mat-cell *matCellDef="let element"></td>
             </ng-container>
 
             <!-- Symbol Column -->
@@ -104,8 +104,9 @@
         </div>
 
 
-        <div>
-          <button mat-button matStepperNext>Next</button>
+        <div class="footerBtn">
+          <button color="accent" mat-raised-button matStepperNext [disabled]="CrearForm5B.invalid" (click)="onGuardarForm5B()"> Guardar Formulario </button>
+          <button color="primary" mat-raised-button matStepperNext> Siguiente </button>
         </div>
       </div>
     </div>
@@ -198,9 +199,10 @@
               <input matInput formControlName="ufp_nombre" >
             </mat-form-field>
             </div>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext (click)="onCreateForm5B()">Next</button>
+      <div class="footerBtn">
+        <button color="primary" mat-raised-button matStepperPrevious>Anterior</button>
+        <button color="accent" mat-raised-button matStepperNext [disabled]="CrearForm5B.invalid" (click)="onGuardarForm5B()"> Guardar Formulario </button>
+        <button color="primary" mat-raised-button matStepperNext> Siguiente </button>
       </div>
     </div>
    </div>
@@ -269,56 +271,59 @@
           </table>
           <input type="submit" value="add">
         </div>
-
+        <mat-radio-group formControlName="modalidad_ejecucion">
           <div class="SubForm">MODALIDAD DE EJECUCIÓN TENTATIVA</div>
             <div class="form-group">
               <div class="lblForm-check">Administración Directa</div>
-              <mat-checkbox [labelPosition]="'before'"></mat-checkbox>
+              <mat-radio-button value="1"></mat-radio-button>
             </div>
             <div class="form-group">
               <div class="lblForm-check">Administración Indirecta - Por contrata</div>
-              <mat-checkbox [labelPosition]="'before'"></mat-checkbox>
+              <mat-radio-button value="2"></mat-radio-button>
             </div>
             <div class="form-group">
               <div class="lblForm-check">Administración Indirecta - Asociación Público Privada</div>
-              <mat-checkbox [labelPosition]="'before'"></mat-checkbox>
+              <mat-radio-button value="3"></mat-radio-button>
             </div>
             <div class="form-group">
               <div class="lblForm-check">Administración Indirecta - Obras por Impuestos</div>
-              <mat-checkbox [labelPosition]="'before'"></mat-checkbox>
+              <mat-radio-button value="4"></mat-radio-button>
             </div>
             <div class="form-group">
               <div class="lblForm-check">Administración Indirecta - Núcleo Ejecutor</div>
-              <mat-checkbox [labelPosition]="'before'"></mat-checkbox>
+              <mat-radio-button value="5"></mat-radio-button>
             </div>
 
-            <div class="SubForm">MODALIDAD DE EJECUCIÓN TENTATIVA</div>
+            </mat-radio-group>
 
+            <mat-radio-group formControlName="fuente_financiamiento" >
+              <div class="SubForm">MODALIDAD DE EJECUCIÓN TENTATIVA</div>
             <div class="form-group">
               <div class="lblForm-check">Recursos Ordinarios</div>
-              <mat-checkbox [labelPosition]="'before'"></mat-checkbox>
+              <mat-radio-button value="1"></mat-radio-button>
             </div>
             <div class="form-group">
               <div class="lblForm-check">Recursos Directamente Recaudados</div>
-              <mat-checkbox [labelPosition]="'before'"></mat-checkbox>
+              <mat-radio-button value="2"></mat-radio-button>
             </div>
             <div class="form-group">
               <div class="lblForm-check">Recursos por Operaciones Oficiales de Crédito</div>
-              <mat-checkbox [labelPosition]="'before'"></mat-checkbox>
+              <mat-radio-button value="3"></mat-radio-button>
             </div>
             <div class="form-group">
               <div class="lblForm-check">Donaciones y transferencias</div>
-              <mat-checkbox [labelPosition]="'before'"></mat-checkbox>
+              <mat-radio-button value="4"></mat-radio-button>
             </div>
             <div class="form-group">
               <div class="lblForm-check">Recursos Determinados</div>
-              <mat-checkbox [labelPosition]="'before'"></mat-checkbox>
+              <mat-radio-button value="5"></mat-radio-button>
             </div>
+          </mat-radio-group>
 
-
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button >Reset</button>
+      <div class="footerBtn">
+        <button color="primary" mat-raised-button matStepperPrevious>Anterior</button>
+        <button color="accent" mat-raised-button matStepperNext [disabled]="CrearForm5B.invalid" (click)="onGuardarForm5B()"> Guardar Formulario </button>
+        <button color="primary" mat-raised-button matStepperNext [disabled]="CrearForm5B.invalid" (click)="onCreateForm5B()"> Enviar Formulario </button>
       </div>
       </div>
     </div>

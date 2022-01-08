@@ -19,6 +19,9 @@ import { ModalEditarUsuarioComponent } from './Modals/modal-editar-usuario/modal
 import { AllFormulariosComponent } from './all-formularios/all-formularios.component';
 import { MyFormulariosComponent } from './my-formularios/my-formularios.component';
 import { InscripcionesComponent } from './inscripciones/inscripciones.component';
+import { VerDetallesFormulariosComponent } from './Modals/ver-detalles-formularios/ver-detalles-formularios.component';
+import { ModuloUsuariosComponent } from './modulo-usuarios/modulo-usuarios.component';
+import { AlertSnackBarComponent } from './Modals/alert-snack-bar/alert-snack-bar.component';
 
 
 
@@ -41,6 +44,9 @@ import { InscripcionesComponent } from './inscripciones/inscripciones.component'
     AllFormulariosComponent,
     MyFormulariosComponent,
     InscripcionesComponent,
+    VerDetallesFormulariosComponent,
+    ModuloUsuariosComponent,
+    AlertSnackBarComponent,
 
   ],
   imports: [

@@ -7,6 +7,8 @@ import dataadmin from 'src/assets/data/menu_admin.json';
 import { MenuNode } from 'src/app/models/menu.interface';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Subscription } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AlertSnackBarComponent } from './Modals/alert-snack-bar/alert-snack-bar.component';
 
 
 const TREE_DATA: MenuNode[] = data;
@@ -60,7 +62,7 @@ export class DashboardComponent implements OnInit , OnDestroy{
 
   dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService,private sb: MatSnackBar) { }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
@@ -91,6 +93,14 @@ export class DashboardComponent implements OnInit , OnDestroy{
   Rol(){
     const res = localStorage.getItem('Token');
 
+  }
+
+  openSnackBar() {
+    this.sb.openFromComponent(AlertSnackBarComponent, {
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+      duration: 10000,
+    });
   }
 
 }
