@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-
+    this.BorrarSession()
   }
 
 
@@ -54,6 +54,10 @@ export class LoginComponent implements OnInit, OnDestroy {
       verticalPosition: 'top',
       duration: 3000,
     });
+  }
+
+  BorrarSession(){
+    this.auth.logout();
   }
 
 }

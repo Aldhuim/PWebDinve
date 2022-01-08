@@ -19,6 +19,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatStepperModule,
     MatPaginatorModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatBottomSheetModule
   ],
   exports: [
     MatSliderModule,
@@ -66,7 +68,8 @@ import {MatRadioModule} from '@angular/material/radio';
     MatStepperModule,
     MatPaginatorModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    MatBottomSheetModule
   ]
 })
 export class SharedModule { }

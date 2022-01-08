@@ -21,6 +21,7 @@ import { MyFormulariosComponent } from './my-formularios/my-formularios.componen
 import { InscripcionesComponent } from './inscripciones/inscripciones.component';
 import { VerDetallesFormulariosComponent } from './Modals/ver-detalles-formularios/ver-detalles-formularios.component';
 import { ModuloUsuariosComponent } from './modulo-usuarios/modulo-usuarios.component';
+import { AlertSnackBarComponent } from './Modals/alert-snack-bar/alert-snack-bar.component';
 
 
 
@@ -45,6 +46,7 @@ import { ModuloUsuariosComponent } from './modulo-usuarios/modulo-usuarios.compo
     InscripcionesComponent,
     VerDetallesFormulariosComponent,
     ModuloUsuariosComponent,
+    AlertSnackBarComponent,
 
   ],
   imports: [
