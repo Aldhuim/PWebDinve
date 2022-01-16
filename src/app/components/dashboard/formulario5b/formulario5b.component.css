@@ -42,12 +42,17 @@
 .container-table{
   padding-left: 5%;
   width: 80%;
+  height: 150px;
+  overflow: auto;
   text-align:center;
 }
 
 .container-table-ioaar{
   padding-left: 5%;
   width: 50%;
+  height: 150px;
+  overflow: auto;
+  text-align:center;
 }
 
 th.mat-header-cell{
@@ -66,4 +71,25 @@ th.mat-header-cell{
 mat-stepper{
   height:auto;
   background: linear-gradient(270deg, #C8C8C8 0%, #F3F3F3 49.97%, #C8C8C8 100%);
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}
+
+.btnMan{
+  margin: 5px;
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  width: 22%;
 }

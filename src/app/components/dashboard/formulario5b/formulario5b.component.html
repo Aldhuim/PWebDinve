@@ -1,9 +1,7 @@
-<mat-stepper [linear]="isLinear" #stepper>
+  <mat-stepper [linear]="isLinear" #stepper>
   <mat-step [stepControl]="firstFormGroup">
     <div [formGroup]="CrearForm5B">
       <div >
-        <ng-template matStepLabel></ng-template>
-
         <div class="form-group">
           <div class="lblForm">NOMBRE DE IDEA DE IOARR</div>
           <mat-form-field appearance="fill">
@@ -11,7 +9,6 @@
             <input matInput formControlName="nombre_idea">
           </mat-form-field>
         </div>
-
         <div class="SubForm">RESPONSABILIDAD FUNCIONAL DE LA INVERSIÓN</div>
         <div class="form-group">
           <div class="lblForm">Función</div>
@@ -50,62 +47,50 @@
             <div class="lblForm">Servicio</div>
             <mat-form-field appearance="fill">
               <mat-label>Servicio</mat-label>
-              <input matInput formControlName="servicio" >
+              <input matInput formControlName="servicio">
             </mat-form-field>
 
           </div>
         </form>
 
+        <!-- Tabla Brechas -->
+
         <div class="container-table">
-          <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-            <!-- Position Column -->
-            <ng-container matColumnDef="position">
-              <th mat-header-cell *matHeaderCellDef>ID</th>
+          <table mat-table #hBServicio="matTable" [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+
+            <ng-container matColumnDef="1">
+              <th mat-header-cell *matHeaderCellDef>#</th>
               <td mat-cell *matCellDef="let element; let i = index">{{i + 1}}</td>
             </ng-container>
 
-            <!-- Name Column -->
-            <ng-container matColumnDef="name">
+            <ng-container matColumnDef="2">
               <th mat-header-cell *matHeaderCellDef>SERVICIO</th>
               <td mat-cell *matCellDef="let element">{{element.servicio}}</td>
             </ng-container>
 
-            <!-- Weight Column -->
-            <ng-container matColumnDef="weight">
-              <th mat-header-cell *matHeaderCellDef>Número de Brechas</th>
-              <td mat-cell *matCellDef="let element"></td>
-            </ng-container>
-
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="symbol">
-              <th mat-header-cell *matHeaderCellDef>Total Brechas</th>
-              <td mat-cell *matCellDef="let element">{{element.symbol}}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="button">
+            <ng-container matColumnDef="3">
               <th mat-header-cell *matHeaderCellDef>
-                <button mat-raised-button (click)="addData()" class="demo-button">
-                Add Servicio
+                <button mat-raised-button color="primary" (click)="addData()" class="demo-button">
+                Agregar Servicio
                 </button>
               </th>
-              <td mat-cell *matCellDef="let element; let i = index">
-                <button mat-raised-button  (click)='onOpenModal(element,i + 1)'>Agregar Brecha</button>
-                <button
+              <td mat-cell *matCellDef="let element; let e = index">
+                <button class="btnMan" mat-raised-button color="accent"  (click)='onOpenModal(element);'>Agregar Brecha</button>
+                <button class="btnMan" color="warn"
                 mat-raised-button [disabled]="!dataSource.length"
-                (click)="removeData()">
-              Remove data
+                (click)="removeData(e)">
+                Eliminar Servicio
             </button>
               </td>
             </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
         </div>
 
-
         <div class="footerBtn">
-          <button color="accent" mat-raised-button matStepperNext [disabled]="CrearForm5B.invalid" (click)="onGuardarForm5B()"> Guardar Formulario </button>
+          <button color="accent" mat-raised-button [disabled]="CrearForm5B.invalid" (click)="onGuardarForm5B()"> Guardar Formulario </button>
           <button color="primary" mat-raised-button matStepperNext> Siguiente </button>
         </div>
       </div>
@@ -201,7 +186,7 @@
             </div>
       <div class="footerBtn">
         <button color="primary" mat-raised-button matStepperPrevious>Anterior</button>
-        <button color="accent" mat-raised-button matStepperNext [disabled]="CrearForm5B.invalid" (click)="onGuardarForm5B()"> Guardar Formulario </button>
+        <button color="accent" mat-raised-button [disabled]="CrearForm5B.invalid" (click)="onGuardarForm5B()"> Guardar Formulario </button>
         <button color="primary" mat-raised-button matStepperNext> Siguiente </button>
       </div>
     </div>
@@ -223,53 +208,54 @@
           </mat-form-field>
         </div>
 
-        <div class="SubForm">DESCRIPCIÓN AGREGADA DE LAS IOARR</div>
+        <form [formGroup]="FormTipoIOARR">
+          <div class="SubForm">DESCRIPCIÓN AGREGADA DE LAS IOARR</div>
         <div class="form-group">
           <div class="lblForm">Tipo de IOARR</div>
           <mat-form-field appearance="fill">
             <mat-label>Tipo de IOARR</mat-label>
-            <input matInput >
+            <input matInput formControlName="tipo_resp" autocomplete="off">
           </mat-form-field>
         </div>
         <div class="form-group">
           <div class="lblForm">Costo Referencial</div>
           <mat-form-field appearance="fill">
             <mat-label>Costo Referencial</mat-label>
-            <input matInput >
+            <input matInput formControlName="costo_resp" autocomplete="off">
           </mat-form-field>
         </div>
+        </form>
 
-        <!-- Table 2 -->
+        <!-- Table  -->
 
         <div class="container-table-ioaar">
-          <table mat-table [dataSource]="dataSource2" class="mat-elevation-z8 demo-table">
-            <!-- Position Column -->
-            <ng-container matColumnDef="position">
-              <th mat-header-cell *matHeaderCellDef>ID</th>
-              <td mat-cell *matCellDef="let element; let i = index">{{i + 1}}</td>
+          <table mat-table #hBTipo="matTable" [dataSource]="dataSource2" class="mat-elevation-z8 demo-table">
+            <ng-container matColumnDef="4">
+              <th mat-header-cell *matHeaderCellDef>TIPO DE IOARR</th>
+              <td mat-cell *matCellDef="let element; let i = index">{{element.tipo_resp}}</td>
+            </ng-container>
+            <ng-container matColumnDef="5">
+              <th mat-header-cell *matHeaderCellDef>COSTO REFERENCIAL</th>
+              <td mat-cell *matCellDef="let element">{{element.costo_resp}}</td>
             </ng-container>
 
-            <!-- Name Column -->
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef>SERVICIO</th>
-              <td mat-cell *matCellDef="let element">{{element.servicio}}</td>
-            </ng-container>
-
-            <ng-container matColumnDef="button">
-              <th mat-header-cell *matHeaderCellDef></th>
-              <td mat-cell *matCellDef="let element; let i = index"><button mat-raised-button  (click)='onOpenModal(element,i + 1)'>Agregar Brecha</button>
-                <button
-                mat-raised-button [disabled]="!dataSource.length"
-                (click)="removeData()">
-              Remove data
-            </button>
+            <ng-container matColumnDef="6">
+              <th mat-header-cell *matHeaderCellDef>
+                <button mat-raised-button color="primary"  (click)="addDataIOARR()" class="demo-button">
+                  Agregar Tipo
+                </button>
+              </th>
+              <td mat-cell *matCellDef="let element; let i = index">
+                <button class="btnMan" mat-mini-fab color="warn" [disabled]="!dataSource2.length"
+                (click)="removeDataIOARR(i)">
+                  <mat-icon>remove_circle_outline</mat-icon>
+                </button>
               </td>
             </ng-container>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns2;sticky: true"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
           </table>
-          <input type="submit" value="add">
         </div>
         <mat-radio-group formControlName="modalidad_ejecucion">
           <div class="SubForm">MODALIDAD DE EJECUCIÓN TENTATIVA</div>
@@ -322,7 +308,7 @@
 
       <div class="footerBtn">
         <button color="primary" mat-raised-button matStepperPrevious>Anterior</button>
-        <button color="accent" mat-raised-button matStepperNext [disabled]="CrearForm5B.invalid" (click)="onGuardarForm5B()"> Guardar Formulario </button>
+        <button color="accent" mat-raised-button  [disabled]="CrearForm5B.invalid" (click)="onGuardarForm5B()"> Guardar Formulario </button>
         <button color="primary" mat-raised-button matStepperNext [disabled]="CrearForm5B.invalid" (click)="onCreateForm5B()"> Enviar Formulario </button>
       </div>
       </div>

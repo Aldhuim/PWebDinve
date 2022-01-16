@@ -1,0 +1,37 @@
+
+table {
+  width: 100%;
+  border: 0px solid black;
+  margin:5px;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
+.trBody{
+  text-align:center;
+}
+
+.form-group{
+  width:100%;
+  float:left;
+}
+
+.SubForm{
+  padding-bottom: 2%;
+  padding-top: 1%;
+}
+
+.lblForm{
+  margin-left:5%;
+  float:left;
+  width:45%;
+}
+
+.trPanel td{
+  text-align:center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.tablePanel{
+  width:100%;
+}

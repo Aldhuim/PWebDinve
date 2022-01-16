@@ -27,10 +27,8 @@ export class AllFormulariosComponent implements OnInit {
   public getAllDetails() {
     this.fromser.getall(this.pages,this.size).subscribe((user) => {
       this.Formularios = Object.values(user);
-      console.log(Object.values(this.Formularios))
       this.Formularios.forEach(element => {
-        if(Object.values(element).length < 20){
-
+        if(Object.values(element).length < 10){
           this.inputbut = true;
         }
         else{
@@ -42,17 +40,30 @@ export class AllFormulariosComponent implements OnInit {
     })
   }
 
-  onOpenModalVer(Formularios = {}) :void {
+  onOpenModalVer(Formularios = {}, tipo: string) :void {
     const dialogRef = this.dialog.open(VerDetallesFormulariosComponent,{
       disableClose: true,
       width: '550px',
-      data: {title:"Detalles Formularios" , Formularios},
+      data: {title:"Detalles Formularios" , Formularios , type: tipo },
 
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
+
     });
+  }
+  prevpag(){
+    if(this.pages > 0){
+      this.pages-=1
+      this.getAllDetails()
+    }
+  }
+
+  nextpag(){
+
+      this.pages+=1;
+      this.getAllDetails()
+
   }
 
 }

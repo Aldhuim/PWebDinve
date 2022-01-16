@@ -1,77 +1,49 @@
-<form [formGroup]="FormModal">
-  <mat-form-field appearance="fill">
-    <mat-label>Brecha</mat-label>
-    <input matInput formControlName="nombre_indi">
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Unidad Medida</mat-label>
-    <input matInput formControlName="unidad_medida">
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Espacio Geografico</mat-label>
-    <input matInput formControlName="espacio_geografico">
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Año</mat-label>
-    <input matInput formControlName="anno">
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Valor</mat-label>
-    <input matInput formControlName="valor">
-  </mat-form-field>
-  <button mat-raised-button (click)="addData()" class="demo-button">
-    Add
-  </button>
-</form>
-
-<div class="container-table">
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-    <ng-container matColumnDef="1">
-      <th mat-header-cell *matHeaderCellDef>ID</th>
-      <td mat-cell *matCellDef="let element; let i = index" >{{i + 1}}</td>
-    </ng-container>
-
-
-    <ng-container matColumnDef="2">
-      <th mat-header-cell *matHeaderCellDef>Brecha</th>
-      <td mat-cell *matCellDef="let element">{{element.nombre_indi}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="3">
-      <th mat-header-cell *matHeaderCellDef>Unidad de Medida</th>
-      <td mat-cell *matCellDef="let element">{{element.unidad_medida}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="4">
-      <th mat-header-cell *matHeaderCellDef>Espacio Geografico</th>
-      <td mat-cell *matCellDef="let element">{{element.espacio_geografico}}</td>
-    </ng-container>
-
-
-    <ng-container matColumnDef="5">
-      <th mat-header-cell *matHeaderCellDef>Año</th>
-      <td mat-cell *matCellDef="let element">{{element.anno}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="6">
-      <th mat-header-cell *matHeaderCellDef>Valor</th>
-      <td mat-cell *matCellDef="let element">{{element.valor}}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="button">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let element; let i = index"><button mat-raised-button >Agregar Brecha</button>
-        <button
-        mat-raised-button [disabled]="!dataSource.length"
-        (click)="removeData()">
-      Remove data
-    </button>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-
-  <button [mat-dialog-close]="dataSource" type="button">Cerrar</button>
+<div class="headerDialog">
+  <h2 mat-dialog-title>{{data.user.servicio}}</h2>
 </div>
+<mat-dialog-content class="mat-typography">
+  Insertadar Brechas: <button (click)="addBrechas()">Agregar Brechas</button>
+  <form [formGroup]="FormModal">
+    <mat-accordion formArrayName="listaIndicarBrecha" *ngFor="let brechas of listaIndicarBrechas.controls;let i = index">
+      <mat-expansion-panel [formGroupName]="i">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Brecha {{i+1}}
+          </mat-panel-title>
+          <mat-panel-description>
+            <button (click)="removeBrechas(i)">Eliminar</button>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-form-field appearance="fill">
+          <mat-label>nombre_indi</mat-label>
+          <input matInput formControlName="nombre_indi" >
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>unidad_medida</mat-label>
+          <input matInput formControlName="unidad_medida" >
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>espacio_geografico</mat-label>
+          <input matInput formControlName="espacio_geografico" >
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>anno</mat-label>
+          <input matInput formControlName="anno" >
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>valor</mat-label>
+          <input matInput formControlName="valor" >
+        </mat-form-field>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </form>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close> Cancelar</button>
+  <button mat-button (click)="submit()">Insertar Brechas</button>
+</mat-dialog-actions>
+
+
+

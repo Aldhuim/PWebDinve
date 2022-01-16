@@ -1,4 +1,23 @@
 .body{
+  width:100%;
+}
+
+.DivMessage{
+  padding-top: 5px;
+  font-size: 18px;
+  width: 100%;
+  font-weight:700;
+  text-align:center;
+}
+
+.form-groupButton{
+  text-align:center;
+  padding-top: 5px;
+}
+
+.btnCancelar{
   float:left;
-  width:500px;
+}
+.btnAceptar{
+  float:right;
 }

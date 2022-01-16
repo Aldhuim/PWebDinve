@@ -29,7 +29,7 @@ export class MyFormulariosComponent implements OnInit {
       this.Formularios = Object.values(user);
       console.log(Object.values(this.Formularios))
       this.Formularios.forEach(element => {
-        if(Object.values(element).length < 20){
+        if(Object.values(element).length < 10){
 
           this.inputbut = true;
         }
@@ -53,6 +53,20 @@ export class MyFormulariosComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
     });
+  }
+
+  prevpag(){
+    if(this.pages > 0){
+      this.pages-=1
+      this.getAllDetails()
+    }
+  }
+
+  nextpag(){
+
+      this.pages+=1;
+      this.getAllDetails()
+
   }
 
 }

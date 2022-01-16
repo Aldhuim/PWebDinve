@@ -28,29 +28,26 @@ export class VerUsuariosComponent implements OnInit {
   }
 
   pages:number = 0
-  size:number = 10
+  size:number = 10;
+  sizength:number = 0;
 
   Usuarios: Usuario[] = [];
 
   ngOnInit() :void{
     this.getAllDetails();
-
     }
 
     public getAllDetails() {
       this.userSvc.getall(this.pages,this.size).subscribe((user) => {
         this.Usuarios = Object.values(user);
         this.Usuarios.forEach(element => {
-          if(Object.values(element).length < 20){
-            console.log(Object.values(element).length);
+          if(Object.values(element).length < 10){
             this.inputbut = true;
           }
           else{
             this.inputbut = false;
           }
-
         });
-
       })
     }
 
@@ -58,7 +55,6 @@ export class VerUsuariosComponent implements OnInit {
       const dialogRef = this.dialog.open(ModalEditarUsuarioComponent,{
         disableClose: true,
         data: {title:"Editar Usuario" , user},
-
       });
 
       dialogRef.afterClosed().subscribe(result => {
@@ -71,8 +67,7 @@ export class VerUsuariosComponent implements OnInit {
       const dialogRef = this.dialog.open(ModalDetallesUsuariosComponent,{
         disableClose: true,
         width: '550px',
-        data: {title:"Ver Usuario" , user},
-
+        data: {title:"Ver Usuario" , user}
       });
 
       dialogRef.afterClosed().subscribe(result => {

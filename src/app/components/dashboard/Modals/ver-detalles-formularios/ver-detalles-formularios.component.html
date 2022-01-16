@@ -1,6 +1,405 @@
 <h2 mat-dialog-title>{{data.title}}</h2>
+
 <mat-dialog-content class="mat-typography">
-  {{data | json}}
+  <div class="GeneralDatos">
+    <div class="SubForm">Datos del Formulario</div>
+    <div class="form-group">
+      <div class="lblForm">Estado de Revisión: </div>
+      <div>{{data.Formularios.estado2}}</div>
+    </div>
+    <div class="form-group">
+      <div class="lblForm">Fecha de Creación: </div>
+      <div>{{data.Formularios.fecha_creacion | date: 'dd/MM/yyyy'}}</div>
+    </div>
+  </div>
+  <ng-container *ngFor="let element of data | ObjtoArray" class="form-group">
+
+    <!-- Detalles del Formulario 5A -->
+    <div *ngIf="element.formulario5A != null">
+        <div class="lblForm">Nombre de la Idea: </div>
+        <div>{{element.formulario5A.nombre_idea}}</div>
+
+        <!-- RESPONSABILIDAD FUNCIONAL DE LA INVERSIÓN -->
+
+        <div class="SubForm">RESPONSABILIDAD FUNCIONAL DE LA INVERSIÓN</div>
+        <div class="form-group">
+          <div class="lblForm">Función: </div>
+          <div>{{element.formulario5A.funcional_funcion}}</div>
+        </div>
+        <div class="form-group">
+          <div class="lblForm">División Funcional: </div>
+          <div>{{element.formulario5A.funcional_division}}</div>
+        </div>
+        <div class="form-group">
+          <div class="lblForm">Grupo Funcional: </div>
+          <div>{{element.formulario5A.funcional_grupo}}</div>
+        </div>
+        <div class="form-group">
+          <div class="lblForm">Sector Responsable: </div>
+          <div>{{element.formulario5A.funcional_sector}}</div>
+        </div>
+
+        <!-- UNIDAD FORMULADORA -->
+
+        <div class="SubForm">UNIDAD FORMULADORA</div>
+        <div class="form-group">
+          <div class="lblForm">Sector: </div>
+          <div>{{element.formulario5A.uf_sector}}</div>
+        </div>
+        <div class="form-group">
+          <div class="lblForm">Entidad: </div>
+          <div>{{element.formulario5A.uf_entidad}}</div>
+        </div>
+        <div class="form-group">
+          <div class="lblForm">Nombre de la UF: </div>
+          <div>{{element.formulario5A.uf_nombre}}</div>
+        </div>
+        <div class="form-group">
+          <div class="lblForm">Responsable de la UF: </div>
+          <div>{{element.formulario5A.uf_responsable}}</div>
+        </div>
+
+        <!-- UNIDAD EJECUTORA DE INVERSIONES -->
+
+        <div class="SubForm">UNIDAD EJECUTORA DE INVERSIONES</div>
+        <div class="form-group">
+          <div class="lblForm">Sector: </div>
+          <div>{{element.formulario5A.ufi_sector}}</div>
+        </div>
+        <div class="form-group">
+          <div class="lblForm">Entidad: </div>
+          <div>{{element.formulario5A.ufi_entidad}}</div>
+        </div>
+        <div class="form-group">
+          <div class="lblForm">Nombre de la UEI: </div>
+          <div>{{element.formulario5A.ufi_nombre}}</div>
+        </div>
+        <div class="form-group">
+          <div class="lblForm">Responsable de la UEI: </div>
+          <div>{{element.formulario5A.ufi_responsable}}</div>
+        </div>
+
+        <!-- UNIDAD EJECUTORA PRESUPUESTAL -->
+
+        <div class="SubForm">UNIDAD EJECUTORA PRESUPUESTAL</div>
+        <div class="form-group">
+          <div class="lblForm">Sector: </div>
+          <div>{{element.formulario5A.ufp_sector}}</div>
+        </div>
+        <div class="form-group">
+          <div class="lblForm">Entidad: </div>
+          <div>{{element.formulario5A.ufp_entidad}}</div>
+        </div>
+        <div class="form-group">
+          <div class="lblForm">Nombre de la UE: </div>
+          <div>{{element.formulario5A.ufp_nombre}}</div>
+        </div>
+
+        <!-- Detalles del Formulario -->
+
+        <div>
+          <div class="container-table">
+            <table>
+              <thead>
+                <tr class="trBody">
+                  <td>ALINEAMIENTO A UNA BRECHA PRIORITARIA</td>
+                </tr>
+              </thead>
+              <tbody *ngFor="let element of data | ObjtoArray">
+                <ng-container  *ngFor="let element2 of element | ObjtoArray">
+                  <ng-container *ngIf="element2 != null">
+                    <ng-container *ngFor="let element3 of element2.listaALineamientoBrechaServiciosPublicosBrechaIdentificada | ObjtoArray" >
+                      <mat-accordion *ngIf="element3 != null">
+                        <mat-expansion-panel >
+                          <mat-expansion-panel-header >
+                            <mat-panel-title>
+                              {{element3.nombre}}
+                            </mat-panel-title>
+                            <mat-panel-description>
+                              Contribucion : {{element3. contribucion_valor}}
+                            </mat-panel-description>
+                          </mat-expansion-panel-header>
+                          <div class="tablePanel">
+                            <tbody>
+                              <tr class="trPanel" *ngFor="let element4 of element3.listaIndicarBrecha | ObjtoArray">
+                                <td>{{element4.nombre}}</td>
+                                <td>{{element4.unidad_medida}}</td>
+                                <td>{{element4.espacio_geografico}}</td>
+                                <td>{{element4.anno}}</td>
+                                <td>{{element4.valor}}</td>
+                              </tr>
+                            </tbody>
+                          </div>
+                        </mat-expansion-panel>
+                      </mat-accordion>
+                  </ng-container>
+                  </ng-container>
+                </ng-container>
+              </tbody>
+            </table>
+           </div>
+
+           <div class="container-table">
+            <table>
+              <thead>
+                <tr class="trBody">
+                  <td>DESCRIPCIÓN AGREGADA DEL PROYECTO/PROGRAMA</td>
+                </tr>
+              </thead>
+              <tbody *ngFor="let element of data | ObjtoArray">
+                <ng-container  *ngFor="let element2 of element | ObjtoArray">
+                  <ng-container *ngIf="element2 != null">
+                    <ng-container *ngFor="let element3 of element2.listaResponsabilidadFuncionalDescripcionAgregada | ObjtoArray" >
+                      <mat-accordion *ngIf="element3 != null">
+                        <mat-expansion-panel >
+                          <mat-expansion-panel-header >
+                            <mat-panel-title>
+                              {{element3.id}}
+                            </mat-panel-title>
+                            <mat-panel-description>
+
+                            </mat-panel-description>
+                          </mat-expansion-panel-header>
+
+                        </mat-expansion-panel>
+                      </mat-accordion>
+                  </ng-container>
+                  </ng-container>
+                </ng-container>
+              </tbody>
+            </table>
+           </div>
+
+           <div class="container-table">
+            <table>
+              <thead>
+                <tr class="trBody">
+                  <td>Documento técnico para la declaración de viabilidad</td>
+                </tr>
+              </thead>
+              <tbody *ngFor="let element of data | ObjtoArray">
+                <ng-container  *ngFor="let element2 of element | ObjtoArray">
+                  <ng-container *ngIf="element2 != null">
+                    <ng-container *ngFor="let element3 of element2.listaAdjunto | ObjtoArray" >
+                      <mat-accordion *ngIf="element3 != null">
+                        <mat-expansion-panel >
+                          <mat-expansion-panel-header >
+                            <mat-panel-title>
+                              {{element3.nombre}}
+                            </mat-panel-title>
+                            <mat-panel-description>
+                              Tipo del Archivo: {{element3.tipo}}
+                            </mat-panel-description>
+                          </mat-expansion-panel-header>
+                          {{element3.direccion}}
+                        </mat-expansion-panel>
+                      </mat-accordion>
+                  </ng-container>
+                  </ng-container>
+                </ng-container>
+              </tbody>
+            </table>
+           </div>
+        </div>
+
+    </div>
+
+    <!-- Detalles del Formulario 5B  -->
+
+    <div *ngIf="element.formulario5B != null">
+      <div class="lblForm">Nombre de la Idea: </div>
+      <div>{{element.formulario5B.nombre_idea}}</div>
+
+      <!-- RESPONSABILIDAD FUNCIONAL DE LA INVERSIÓN -->
+
+      <div class="SubForm">RESPONSABILIDAD FUNCIONAL DE LA INVERSIÓN</div>
+      <div class="form-group">
+        <div class="lblForm">Función: </div>
+        <div>{{element.formulario5B.funcional_funcion}}</div>
+      </div>
+      <div class="form-group">
+        <div class="lblForm">División Funcional: </div>
+        <div>{{element.formulario5B.funcional_division}}</div>
+      </div>
+      <div class="form-group">
+        <div class="lblForm">Grupo Funcional: </div>
+        <div>{{element.formulario5B.funcional_grupo}}</div>
+      </div>
+      <div class="form-group">
+        <div class="lblForm">Sector Responsable: </div>
+        <div>{{element.formulario5B.funcional_sector}}</div>
+      </div>
+
+      <!-- UNIDAD FORMULADORA -->
+
+      <div class="SubForm">UNIDAD FORMULADORA</div>
+      <div class="form-group">
+        <div class="lblForm">Sector: </div>
+        <div>{{element.formulario5B.uf_sector}}</div>
+      </div>
+      <div class="form-group">
+        <div class="lblForm">Entidad: </div>
+        <div>{{element.formulario5B.uf_entidad}}</div>
+      </div>
+      <div class="form-group">
+        <div class="lblForm">Nombre de la UF: </div>
+        <div>{{element.formulario5B.uf_nombre}}</div>
+      </div>
+      <div class="form-group">
+        <div class="lblForm">Responsable de la UF: </div>
+        <div>{{element.formulario5B.uf_responsable}}</div>
+      </div>
+
+      <!-- UNIDAD EJECUTORA DE INVERSIONES -->
+
+      <div class="SubForm">UNIDAD EJECUTORA DE INVERSIONES</div>
+      <div class="form-group">
+        <div class="lblForm">Sector: </div>
+        <div>{{element.formulario5B.ufi_sector}}</div>
+      </div>
+      <div class="form-group">
+        <div class="lblForm">Entidad: </div>
+        <div>{{element.formulario5B.ufi_entidad}}</div>
+      </div>
+      <div class="form-group">
+        <div class="lblForm">Nombre de la UEI: </div>
+        <div>{{element.formulario5B.ufi_nombre}}</div>
+      </div>
+      <div class="form-group">
+        <div class="lblForm">Responsable de la UEI: </div>
+        <div>{{element.formulario5B.ufi_responsable}}</div>
+      </div>
+
+      <!-- UNIDAD EJECUTORA PRESUPUESTAL -->
+
+      <div class="SubForm">UNIDAD EJECUTORA PRESUPUESTAL</div>
+      <div class="form-group">
+        <div class="lblForm">Sector: </div>
+        <div>{{element.formulario5B.ufp_sector}}</div>
+      </div>
+      <div class="form-group">
+        <div class="lblForm">Entidad: </div>
+        <div>{{element.formulario5B.ufp_entidad}}</div>
+      </div>
+      <div class="form-group">
+        <div class="lblForm">Nombre de la UE: </div>
+        <div>{{element.formulario5B.ufp_nombre}}</div>
+      </div>
+
+      <!-- Detalles del Formulario -->
+      <div>
+        <div class="container-table">
+          <table>
+            <thead>
+              <tr class="trBody">
+                <td>ALINEAMIENTO A UNA BRECHA PRIORITARIA</td>
+              </tr>
+            </thead>
+            <tbody *ngFor="let element of data | ObjtoArray">
+              <ng-container  *ngFor="let element2 of element | ObjtoArray">
+                <ng-container *ngIf="element2 != null">
+                  <ng-container *ngFor="let element3 of element2.listaAlineamientoBrechaServiciosPublicosBrechaIdentificada | ObjtoArray" >
+                    <mat-accordion *ngIf="element3 != null">
+                      <mat-expansion-panel >
+                        <mat-expansion-panel-header >
+                          <mat-panel-title>
+                            {{element3.nombre}}
+                          </mat-panel-title>
+                          <mat-panel-description>
+                            Contribucion : {{element3. contribucion_valor}}
+                          </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <div class="tablePanel">
+                          <tbody>
+                            <tr class="trPanel" *ngFor="let element4 of element3.listaIndicarBrecha | ObjtoArray">
+                              <td>{{element4.nombre}}</td>
+                              <td>{{element4.unidad_medida}}</td>
+                              <td>{{element4.espacio_geografico}}</td>
+                              <td>{{element4.anno}}</td>
+                              <td>{{element4.valor}}</td>
+                            </tr>
+                          </tbody>
+                        </div>
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                </ng-container>
+                </ng-container>
+              </ng-container>
+            </tbody>
+          </table>
+         </div>
+
+         <div class="container-table">
+          <table>
+            <thead>
+              <tr class="trBody">
+                <td>DESCRIPCIÓN AGREGADA DEL PROYECTO/PROGRAMA</td>
+              </tr>
+            </thead>
+            <tbody *ngFor="let element of data | ObjtoArray">
+              <ng-container  *ngFor="let element2 of element | ObjtoArray">
+                <ng-container *ngIf="element2 != null">
+                  <ng-container *ngFor="let element3 of element2.listaResponsabilidadFuncionalDescripcionIOARR | ObjtoArray" >
+                    <mat-accordion *ngIf="element3 != null">
+                      <mat-expansion-panel >
+                        <mat-expansion-panel-header >
+                          <mat-panel-title>
+                            {{element3.tipo}}
+                          </mat-panel-title>
+                          <mat-panel-description>
+                            Costo: {{element3.costo}}
+                          </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                </ng-container>
+                </ng-container>
+              </ng-container>
+            </tbody>
+          </table>
+         </div>
+
+         <div class="container-table">
+          <table>
+            <thead>
+              <tr class="trBody">
+                <td>Documento técnico para la declaración de viabilidad</td>
+              </tr>
+            </thead>
+            <tbody *ngFor="let element of data | ObjtoArray">
+              <ng-container  *ngFor="let element2 of element | ObjtoArray">
+                <ng-container *ngIf="element2 != null">
+                  <ng-container *ngFor="let element3 of element2.listaAdjunto | ObjtoArray" >
+                    <mat-accordion *ngIf="element3 != null">
+                      <mat-expansion-panel >
+                        <mat-expansion-panel-header >
+                          <mat-panel-title>
+                            {{element3.nombre}}
+                          </mat-panel-title>
+                          <mat-panel-description>
+                            Tipo del Archivo: {{element3.tipo}}
+                          </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        {{element3.direccion}}
+                      </mat-expansion-panel>
+                    </mat-accordion>
+                </ng-container>
+                </ng-container>
+              </ng-container>
+            </tbody>
+          </table>
+         </div>
+      </div>
+
+    </div>
+
+  </ng-container>
+
+
+
+
+
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cerrar</button>

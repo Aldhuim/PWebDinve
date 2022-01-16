@@ -1,6 +1,6 @@
 
 {
-  "/dinve": {
+  "/dinve/*": {
     "target": "https://mesa-dinve.azurewebsites.net",
     "secure": true,
     "pathRewrite": {

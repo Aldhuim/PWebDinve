@@ -98,9 +98,24 @@
   }
   .TitleNav{
     text-align: center;
-    padding: 10px;
+    padding: 5px;
     text-transform: uppercase;
     font-weight: 700;
+    color: #fff;
+  }
+  .TitleSubNav{
+    text-align: center;
+    text-transform: uppercase;
+    padding-top: 20px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .TitleUserNav{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size:12px;
+    padding-bottom: 5px;
     color: #fff;
   }
 

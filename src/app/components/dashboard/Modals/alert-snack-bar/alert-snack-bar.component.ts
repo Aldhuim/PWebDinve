@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarRef, MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
@@ -9,18 +10,24 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class AlertSnackBarComponent implements OnInit {
 
-  constructor(private auth: AuthService,private sb:MatSnackBar) { }
+  constructor(@Inject(MAT_SNACK_BAR_DATA) public data : any,private auth: AuthService,private sb:MatSnackBar,
+  private snackBarRef: MatSnackBarRef<AlertSnackBarComponent>) { }
 
   ngOnInit(): void {
   }
 
     doAction() {
-    this.auth.logout();
-    this.sb.dismiss();
+    if(this.data.accion == "CerrarCuenta"){
+      this.auth.logout();
+      this.snackBarRef.dismissWithAction();
+    }
+    else if(this.data.accion == "CerrarBrecha"){
+      this.snackBarRef.dismissWithAction();
+    }
     }
 
     cancel() {
-      this.sb.dismiss();
+      this.snackBarRef.dismiss();
     }
 
 }

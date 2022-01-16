@@ -18,6 +18,7 @@
 
 .container-header button{
   float: right;
+  margin-top: 10px;
   margin-right: 45px;
 }
 
@@ -60,3 +61,10 @@ table {
   background-color:#c82333;
 }
 
+
+.BtnPrev{
+  float: left;
+}
+.BtnNext{
+  float: right;
+}

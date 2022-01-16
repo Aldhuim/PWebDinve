@@ -13,6 +13,7 @@ import { InscripcionesComponent } from './inscripciones/inscripciones.component'
 import { MenuPrincipalComponent } from './menu-principal/menu-principal.component';
 import { MyFormulariosComponent } from './my-formularios/my-formularios.component';
 import { VerUsuariosComponent } from './ver-usuarios/ver-usuarios.component';
+import { ConfigComponent } from './config/config.component';
 
 const routes: Routes = [
   {path:'', component:DashboardComponent, children: [
@@ -25,7 +26,8 @@ const routes: Routes = [
     {path: 'CrearU', component:CrearUsuariosComponent, canActivate:[RolesGuardGuard]},
     {path:'ModuloIns', component:InscripcionesComponent },
     {path:'VerIns', component:AllFormulariosComponent, canActivate:[RolesGuardGuard] },
-    {path:'InsEnv', component:MyFormulariosComponent }
+    {path:'InsEnv', component:MyFormulariosComponent },
+    {path:'CamPass', component:ConfigComponent}
   ] ,
   canActivate:[LoginGuardGuard]
 }

@@ -1,6 +1,7 @@
+
 <div class="body">
   <div class="content-login">
-    <img src="./assets/Logo.png" alt="" class="imgLogo">
+    <img src="./assets/Logo.png" class="imgLogo">
     <h1 class="content-title">PROCESO MILITAR DE TOMA DE DECISIONES</h1>
     <form [formGroup]= "loginForms" >
       <mat-form-field appearance="fill" color="primary">
@@ -14,11 +15,9 @@
         <input matInput
           formControlName="password"
          [type]="hide ? 'password' : 'text'">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
+         <mat-icon matSuffix (click)="hide = !hide" >{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </mat-form-field>
-      <button class="btnIngresar"mat-raised-button [disabled]="loginForms.invalid" color="primary" (click)="onLogin()">Ingresar al Sistema</button>
+        <button class="btnIngresar"mat-raised-button [disabled]="loginForms.invalid" color="primary" (click)="onLogin()"><app-spinner></app-spinner>Ingresar al Sistema</button>
     </form>
   </div>
 </div>

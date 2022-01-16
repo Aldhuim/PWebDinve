@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -14,6 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class LoginComponent implements OnInit, OnDestroy {
 
   hide = true;
+
   loginForms = this.fb.group({
     user: ['',[Validators.required, Validators.minLength(5)]],
     password:['',[Validators.required, Validators.minLength(6)]]
@@ -21,43 +21,29 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   private subscription : Subscription = new Subscription();
 
-  constructor(private auth: AuthService, private fb:FormBuilder,private router:Router,private _snackBar: MatSnackBar) { }
+  constructor(private auth: AuthService,
+  private fb:FormBuilder,private router:Router) { }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
   ngOnInit(): void {
-    this.BorrarSession()
-  }
 
+  }
 
   onLogin(){
     const formValue = this.loginForms.value;
     this.subscription.add(
       this.auth.login(formValue).subscribe(res =>{
-        if(res){
-          if(res.token){
+          if(res) {
            this.router.navigate(['dashboard']);
           }
-          else{
-            this.openSnackBar();
-          }
-        }
       })
     )
   }
 
-  openSnackBar() {
-    this._snackBar.open('El usuario ingresado no existe o ingreso datos incorrectos', '', {
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
-      duration: 3000,
-    });
-  }
 
-  BorrarSession(){
-    this.auth.logout();
-  }
+
 
 }

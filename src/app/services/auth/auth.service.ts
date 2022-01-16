@@ -1,10 +1,11 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, catchError, map, Observable, Subscription, throwError } from 'rxjs';
-import { TokenResponse, User, UserRespose } from 'src/app/models/user.interface';
-import { environment }from 'src/environments/environment';
+import { User, UserRespose } from 'src/app/models/user.interface';
+import { environment } from 'src/environments/environment'
 
 const helper = new JwtHelperService();
 
@@ -13,15 +14,13 @@ const helper = new JwtHelperService();
 })
 export class AuthService  {
 
-
-
   private loggedIn = new BehaviorSubject<boolean>(false);
   private role = new BehaviorSubject<number|null>(null);
   private username = new BehaviorSubject<string|any>(null);
   private userToken = new BehaviorSubject<string|any>(null);
   private idusuario = new BehaviorSubject<number|any>(null);
 
-  constructor(private router: Router,private http:HttpClient) {
+  constructor(private router: Router,private http:HttpClient,private _snackBar: MatSnackBar) {
     this.checkToken();
    }
 
@@ -33,7 +32,7 @@ export class AuthService  {
     return this.role.asObservable();
   }
 
-  get UserName():Observable<string|any>{
+  get UserName():Observable<string>{
     return this.username.asObservable();
   }
 
@@ -46,15 +45,19 @@ export class AuthService  {
   }
 
   login(authData:User): Observable<UserRespose | void> {
-    return this.http.put<UserRespose>(`/dinve/user/login`,authData)
+    return this.http.put<UserRespose>(`${environment.API_URL}/user/login`,authData)
     .pipe(
       map((res:UserRespose) =>{
-        if(res.msg != 'Usuario no registrado'){
+        if(res.token){
           this.saveToken(res);
           this.loggedIn.next(true);
           this.role.next(res.usuario.rol);
           this.idusuario.next(res.usuario.id);
+          this.username.next(res.usuario.nombre + " " + res.usuario.apellido)
           this.userToken.next(res.token);
+        }
+        else{
+          this.openSnackBar();
         }
         return res;
       }),
@@ -82,15 +85,15 @@ export class AuthService  {
         this.role.next(user.usuario.rol);
         this.idusuario.next(user.usuario.id);
         this.userToken.next(user.token);
+        this.username.next(user.usuario.nombre + " " + user.usuario.apellido)
       }
     }
   }
 
   private saveToken(user:UserRespose){
-     const { ... rest} = user;
+    const { ... rest} = user;
     localStorage.setItem('Token',JSON.stringify(rest));
-
-  };
+ };
 
   private handleError(err :any): Observable<never>{
 
@@ -101,4 +104,12 @@ export class AuthService  {
     window.alert(errorMessage);
     return throwError(err);
   };
+
+  openSnackBar() {
+    this._snackBar.open('Verifique si sus datos son correctos', '', {
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      duration: 3000,
+    });
+  }
 }

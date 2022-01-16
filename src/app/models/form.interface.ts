@@ -64,8 +64,8 @@ export interface listaIndicarBrecha{
   nombre_indi: string;
   unidad_medida:number;
   espacio_geografico:string;
-  anno: string;
-  valor: string;
+  anno: number;
+  valor: number;
 }
 
 export interface formulario5B{
@@ -103,7 +103,7 @@ export interface listaAlineamientoBrechaServiciosPublicosBrechaIdentificada{
 }
 
 export interface listaResponsabilidadFuncionalDescripcionIOARR{
-  id: number;
-  tipo: string;
-  costo:number;
+  id_resp: number;
+  tipo_resp: string;
+  costo_resp:number;
 }

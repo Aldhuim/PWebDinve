@@ -33,8 +33,9 @@ export class DashboardComponent implements OnInit , OnDestroy{
 
   isRol:any = null;
   isLogged = false;
-  isUsername = null;
+  isUsername:any = null;
   isIdUser = null;
+  isNombreRol:any = null;
 
   private subscription : Subscription = new Subscription();
 
@@ -71,9 +72,10 @@ export class DashboardComponent implements OnInit , OnDestroy{
   opened =true;
 
   ngOnInit(): void {
+    this.getUser();
     this.subscription.add(
       this.auth.isLogged.subscribe((res)=>(this.isLogged = res)));
-      this.auth.Roles.subscribe((res)=>(this.isRol = res));
+
 
         if(this.isRol == 1 || this.isRol == 2){
           this.dataSource.data = TREE_DATA_ADMIN;
@@ -90,9 +92,27 @@ export class DashboardComponent implements OnInit , OnDestroy{
       this.auth.logout();
   }
 
-  Rol(){
-    const res = localStorage.getItem('Token');
-
+  getUser(){
+    this.subscription.add(
+      this.auth.UserName.subscribe(response => this.isUsername = response)
+    );
+    this.subscription.add(
+      this.auth.Roles.subscribe((res)=>(this.isRol = res))
+    );
+    switch (this.isRol) {
+        case 0:
+        this.isNombreRol='Usuario UP';
+        break;
+        case 1:
+          this.isNombreRol='Usuario Dinve';
+        break;
+        case 2:
+          this.isNombreRol='Administrador';
+        break;
+        default:
+          this.isNombreRol="ROL NO ENCONTRADO"
+        break;
+    }
   }
 
   openSnackBar() {
@@ -100,6 +120,7 @@ export class DashboardComponent implements OnInit , OnDestroy{
       horizontalPosition: 'right',
       verticalPosition: 'top',
       duration: 10000,
+      data:{accion:"CerrarCuenta",Message:" Seguro que quieres Cerrar Sesión?", Opcion1:"Cancelar",Opcion2:"Si,Cerrar Sesión"},
     });
   }
 

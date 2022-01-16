@@ -1,5 +1,7 @@
 <div class="body">
-  Seguro que quieres Cerrar Sesión?
-  <button mat-button color="primary" (click)="cancel()">Cancelar </button>
-  <button mat-button color="accent" (click)="doAction()">Si,Cerrar Sesión </button>
+ <div class="DivMessage">{{data.Message}}</div>
+<div class="form-groupButton">
+  <button mat-button class="btnCancelar"color="primary" (click)="cancel()">{{data.Opcion1}}</button>
+  <button mat-button class="btnAceptar" color="accent" (click)="doAction()">{{data.Opcion2}}</button>
+</div>
 </div>

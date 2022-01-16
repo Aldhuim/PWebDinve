@@ -1,3 +1,4 @@
+
 <mat-toolbar >
   <button mat-icon-button class="IconBar" (click)="opened=!opened" >
       <mat-icon>menu</mat-icon>
@@ -14,7 +15,7 @@
 </mat-toolbar>
 <mat-sidenav-container>
     <mat-sidenav mode="side" [(opened)]="opened" >
-      <div class="TitleNav">Menú de Navegación </div>
+      <div class="TitleNav">Menú de Navegación</div>
         <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="NavSlider">
               <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding [id]="node.modulo">
                   <button mat-button class="btnSubOpciones" routerLink="/dashboard/{{node.modulo}}" >
@@ -31,6 +32,9 @@
               </button>
             </mat-tree-node>
           </mat-tree>
+          <div class="TitleSubNav">Bienvenido:</div>
+          <div class="TitleUserNav" >{{isUsername}}</div>
+          <div class="TitleUserNav">Rol: {{isNombreRol}}</div>
     </mat-sidenav >
     <mat-sidenav-content>
       <app-spinner></app-spinner>
